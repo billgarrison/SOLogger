@@ -2,9 +2,9 @@
 {
 	08FB7793FE84155DC02AAC07 /* Project object */ = {
 		activeArchitecturePreference = x86_64;
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = B1C97B670FEC0FA300B0E341 /* Demo */;
-		activeTarget = 8DD76F960486AA7600D96B5E /* Demo */;
+		activeTarget = B1837EBC100E709B00BA6C78 /* SOASLLogger */;
 		addToTargets = (
 			8DD76F960486AA7600D96B5E /* Demo */,
 		);
@@ -77,14 +77,15 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 269388152;
-			PBXWorkspaceStateSaveDate = 269388152;
+			PBXPerProjectTemplateStateSaveDate = 269390653;
+			PBXWorkspaceStateSaveDate = 269390653;
 		};
 		perUserProjectItems = {
 			B1837FFA100E83DB00BA6C78 /* PBXTextBookmark */ = B1837FFA100E83DB00BA6C78 /* PBXTextBookmark */;
 			B190802E100E8A7E000418BB /* PBXTextBookmark */ = B190802E100E8A7E000418BB /* PBXTextBookmark */;
-			B190802F100E8A7E000418BB /* PBXTextBookmark */ = B190802F100E8A7E000418BB /* PBXTextBookmark */;
-			B1908030100E8A7E000418BB /* PBXTextBookmark */ = B1908030100E8A7E000418BB /* PBXTextBookmark */;
+			B19082CF100E8F4B000418BB /* PBXTextBookmark */ = B19082CF100E8F4B000418BB /* PBXTextBookmark */;
+			B19082D5100E8F50000418BB /* PlistBookmark */ = B19082D5100E8F50000418BB /* PlistBookmark */;
+			B19084DD100E9393000418BB /* PlistBookmark */ = B19084DD100E9393000418BB /* PlistBookmark */;
 			B1C570EE100E4B2200ED28E8 /* PBXTextBookmark */ = B1C570EE100E4B2200ED28E8 /* PBXTextBookmark */;
 			B1C570EF100E4B2200ED28E8 /* PBXTextBookmark */ = B1C570EF100E4B2200ED28E8 /* PBXTextBookmark */;
 		};
@@ -94,9 +95,9 @@
 	};
 	08FB7796FE84155DC02AAC07 /* main.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {751, 1836}}";
+			sepNavIntBoundsRect = "{{0, 0}, {751, 1782}}";
 			sepNavSelRange = "{1723, 0}";
-			sepNavVisRange = "{1539, 720}";
+			sepNavVisRange = "{1539, 692}";
 			sepNavWindowFrame = "{{4, 155}, {1276, 623}}";
 		};
 	};
@@ -138,11 +139,6 @@
 		name = Demo_Prefix.pch;
 		path = /Volumes/Leopard/Users/bgarrison/Documents/hg/soasllogger/Demo_Prefix.pch;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {751, 417}}";
-			sepNavSelRange = "{61, 0}";
-			sepNavVisRange = "{0, 61}";
-		};
 	};
 	B1838030100E84AC00BA6C78 /* Demo_Prefix.pch */ = {
 		uiCtxt = {
@@ -165,10 +161,9 @@
 		hitCount = 1;
 		ignoreCount = 0;
 		lineNumber = 169;
-		location = SOASLLogger;
 		modificationTime = 269387646.98035;
 		originalNumberOfMultipleMatches = 1;
-		state = 1;
+		state = 0;
 	};
 	B190802E100E8A7E000418BB /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -180,25 +175,37 @@
 		vrLen = 61;
 		vrLoc = 0;
 	};
-	B190802F100E8A7E000418BB /* PBXTextBookmark */ = {
+	B19082CF100E8F4B000418BB /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 08FB7796FE84155DC02AAC07 /* main.m */;
 		name = "main.m: 57";
 		rLen = 0;
 		rLoc = 1723;
 		rType = 0;
-		vrLen = 720;
+		vrLen = 692;
 		vrLoc = 1539;
 	};
-	B1908030100E8A7E000418BB /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 08FB7796FE84155DC02AAC07 /* main.m */;
-		name = "main.m: 57";
+	B19082D5100E8F50000418BB /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B1837EBE100E709B00BA6C78 /* SOASLLogger-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Volumes/Leopard/Users/bgarrison/Documents/hg/soasllogger/SOASLLogger-Info.plist";
 		rLen = 0;
-		rLoc = 1723;
-		rType = 0;
-		vrLen = 720;
-		vrLoc = 1539;
+		rLoc = 9223372036854775808;
+	};
+	B19084DD100E9393000418BB /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B1837EBE100E709B00BA6C78 /* SOASLLogger-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Volumes/Leopard/Users/bgarrison/Documents/hg/soasllogger/SOASLLogger-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
 	};
 	B1C56FF4100E3FFB00ED28E8 /* main.m:87 */ = {
 		isa = PBXFileBreakpoint;
@@ -213,10 +220,9 @@
 		hitCount = 1;
 		ignoreCount = 0;
 		lineNumber = 87;
-		location = demo_soasllogger;
 		modificationTime = 269387635.020418;
 		originalNumberOfMultipleMatches = 1;
-		state = 1;
+		state = 0;
 	};
 	B1C570EE100E4B2200ED28E8 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -346,10 +352,9 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 63;
-		location = SOASLLogger;
 		modificationTime = 269387634.339454;
 		originalNumberOfMultipleMatches = 1;
-		state = 1;
+		state = 0;
 	};
 	B1E370F60FECB5E6002F8A83 /* SOASLClient.m:77 */ = {
 		isa = PBXFileBreakpoint;
@@ -364,9 +369,8 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 77;
-		location = SOASLLogger;
 		modificationTime = 269387634.359628;
 		originalNumberOfMultipleMatches = 1;
-		state = 1;
+		state = 0;
 	};
 }
