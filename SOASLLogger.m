@@ -10,6 +10,8 @@
 #import "SOASLLogger.h"
 #import "SOASLClient.h"
 
+static NSString * const ASLClientKey = @"SOASLClient";
+
 @implementation SOASLLogger
 
 @synthesize facility = myFacility;
@@ -47,13 +49,16 @@
 		[super dealloc];
 }
 
-// Get the ASL client connection that we should be using for the current thread. 
+// Return an ASL client connection that we should be using for the current thread. 
 - (SOASLClient *) ASLClient;
 {
 		// We use the NSThread threadDictionary to cache an instance of our ASLClient cover object.  When the thread is released, the ASLClient deallocs, taking care of closing out the client connection.
 		
 		NSMutableDictionary *threadInfo = [[NSThread currentThread] threadDictionary];
-		SOASLClient *cachedASLClient = [threadInfo objectForKey:@"SOASLClient"];
+		assert( threadInfo != nil );
+
+		SOASLClient *cachedASLClient = [threadInfo objectForKey:ASLClientKey];
+		
 		if ( cachedASLClient == nil ) {
 				
 				// Create a new ASLClient instance and cache it in the current thread's dictionary.
@@ -70,13 +75,16 @@
 				asl_set_filter([cachedASLClient aslclient], ASL_FILTER_MASK_UPTO(ASL_LEVEL_DEBUG));
 #endif
 				
-				[threadInfo setObject:cachedASLClient forKey:@"ASLClient"];
+				[threadInfo setObject:cachedASLClient forKey:ASLClientKey];
 				
 				[cachedASLClient release];
 		}
 		
-		return cachedASLClient;
+		return [[cachedASLClient retain] autorelease];
 }
+
+#pragma mark -
+#pragma mark Logging
 
 - (void) debug:(NSString *)text, ...;
 {
@@ -94,6 +102,56 @@
 		va_end (arglist);
 }
 
+- (void) notice:(NSString *)text, ...;
+{
+		va_list arglist;
+		va_start (arglist, text);
+		[self messageWithLevel:ASL_LEVEL_NOTICE prefix:nil suffix:nil message:text arguments:arglist];
+		va_end (arglist);
+}
+
+- (void) warning:(NSString *)text, ...;
+{
+		va_list arglist;
+		va_start (arglist, text);
+		[self messageWithLevel:ASL_LEVEL_WARNING prefix:nil suffix:nil message:text arguments:arglist];
+		va_end (arglist);
+}
+
+- (void) error:(NSString *)text, ...;
+{
+		va_list arglist;
+		va_start (arglist, text);
+		[self messageWithLevel:ASL_LEVEL_ERR prefix:nil suffix:nil message:text arguments:arglist];
+		va_end (arglist);
+}
+
+- (void) alert:(NSString *)text, ...;
+{
+		va_list arglist;
+		va_start (arglist, text);
+		[self messageWithLevel:ASL_LEVEL_ALERT prefix:nil suffix:nil message:text arguments:arglist];
+		va_end (arglist);
+}
+
+- (void) critical:(NSString *)text, ...;
+{
+		va_list arglist;
+		va_start (arglist, text);
+		[self messageWithLevel:ASL_LEVEL_CRIT prefix:nil suffix:nil message:text arguments:arglist];
+		va_end (arglist);
+}
+
+- (void) panic:(NSString *)text, ...;
+{
+		va_list arglist;
+		va_start (arglist, text);
+		[self messageWithLevel:ASL_LEVEL_EMERG prefix:nil suffix:nil message:text arguments:arglist];
+		va_end (arglist);
+}
+
+#pragma mark -
+#pragma mark Logging Primitives
 
 - (void) messageWithLevel:(int)aslLevel prefix:(NSString *)prefix suffix:(NSString *)suffix message:(NSString *)text, ...;
 {
@@ -113,8 +171,6 @@
 		SOASLClient *client = [self ASLClient];
 		assert( [client isOpen] );
 		
-		//NSLog(@"client: %@ on thread %@", client, [NSThread currentThread]);
-		
 		NSMutableString *constructedMessage = [NSMutableString string];
 		if ( prefix ) [constructedMessage appendString:prefix];		
 		[constructedMessage appendString:message];
@@ -128,6 +184,11 @@
 		int didLog = asl_log([client aslclient], msg, aslLevel, "%s", [constructedMessage UTF8String]);
 		
 		asl_free( msg );
+	
+#if SOASLLOGGER_DEBUG
+		NSThread *currentThread = [NSThread currentThread];
+		NSLog(@"%@ on %@ thread %@", client, ([currentThread isEqual:[NSThread mainThread]] ? @"main" : @"background"), currentThread);
+#endif
 		
 		assert( didLog == 0);
 		

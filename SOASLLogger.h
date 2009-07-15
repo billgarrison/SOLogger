@@ -17,26 +17,107 @@
 		uint32_t myClientOptions;
 		NSMutableArray *myMirrorFileDescriptors;
 }
-@property (nonatomic, readonly) NSString *facility;
-@property (nonatomic, assign) uint32_t clientOptions;
-@property (nonatomic, readonly) NSMutableArray *mirrorFileDescriptors;
 
+@property (nonatomic, readonly) NSString *facility; /**< The identifier of the facility associated with this logger. */
+@property (nonatomic, assign) uint32_t clientOptions; /**< A bitflag of ASL options that will be passed to the <tt>asl_open</tt> function. */
+@property (nonatomic, readonly) NSMutableArray *mirrorFileDescriptors; /** Array of file descriptors (as NSNumber) to which messages will be echoed. */
+
+#pragma mark -
+#pragma mark Creation
+
+/**
+ Factory method for creating an open ASL logger.
+ \param facility The identifier of the facility associated with this logger.  Pass nil and the messages are logged to @"com.apple.console".
+ \param options A bitflag of ASL options that will be passed to the <tt>asl_open</tt> function.
+ */
 + (SOASLLogger *) loggerForFacility:(NSString *)facility options:(uint32_t)options;
 
 /**
- \param facility The facility for which this logger will be logging.  Recommended that you use a reverse-DNS style naming scheme to avoid name collisions.
+ \param facility The facility for which this logger will be logging.  Recommended that you use a reverse-DNS style naming scheme to avoid name collisions. Pass nil and the messages are logged to @"com.apple.console".
+ \param options Bitflag specifying ASL options.  Of most utility is the ASL_OPT_STDERR flag.
+ The facility can be used to identify the application or a particular subsystem within the application.  Messages are tagged with this facility identifier when added to the ASL database.  The option <tt>ASL_OPT_STDERR</tt> configures the logger to echo logged messages to stderr; required to see log messages in the Xcode console.
+ \sa <tt>man 3 asl</tt> for documentation on the function <tt>asl_open</tt> for the available option flags.
  */
 - (id) initWithFacility:(NSString *)facility options:(uint32_t)options;
 
+#pragma mark -
+#pragma mark Logging Convenience Methods
+
+/**
+\brief Log a debug level message.
+\param message The message.  Accepts all formatting specifiers available to NSString.
+ In the default syslog configuration, debug- and info-level messages are not logged to the ASL database.  They are logged to stderr and any additional file descriptors attached to the logger.
+*/
 - (void) debug:(NSString *)message, ...;
+
+/**
+ \brief Log a debug level message.
+ \param message The message.  Accepts all formatting specifiers available to NSString.
+ In the default syslog configuration, debug- and info-level messages are not logged to the ASL database.  They are logged to stderr and any additional file descriptors attached to the logger.
+ */
 - (void) info:(NSString *)message, ...;
 
+/**
+ \brief Log a notice level message.
+ \param message The message.  Accepts all formatting specifiers available to NSString.
+ In the default syslog configuration, this is the lowest level message to be logged in the ASL database.
+ */
+- (void) notice:(NSString *)message, ...;
+
+/**
+ \brief Log a warning level message.
+ \param message The message.  Accepts all formatting specifiers available to NSString.
+ */
+- (void) warning:(NSString *)message, ...;
+
+/**
+ \brief Log an error level message.
+ \param message The message.  Accepts all formatting specifiers available to NSString.
+ */
+- (void) error:(NSString *)message, ...;
+
+/**
+ \brief Log an alert level message.
+ \param message The message.  Accepts all formatting specifiers available to NSString.
+ */
+- (void) alert:(NSString *)message, ...;
+
+/**
+ \brief Log a critical level message.
+ \param message The message.  Accepts all formatting specifiers available to NSString.
+ */
+- (void) critical:(NSString *)message, ...;
+
+/**
+ \brief Log a panic or emergency level message.
+ \param message The message.  Accepts all formatting specifiers available to NSString.
+ This is the highest level message.
+ */
+- (void) panic:(NSString *)message, ...;
+
+#pragma mark -
+#pragma mark Logging Primitives
+
+/**
+ \brief Logs a message with the given level, prefix and/or suffix string.
+ \param aslLevel The severity level of the message. From least to most severe: ASL_LEVEL_DEBUG, ASL_LEVEL_INFO, ASL_LEVEL_NOTICE, ASL_LEVEL_WARNING, ASL_LEVEL_ERR, ASL_LEVEL_CRIT, ASL_LEVEL_ALERT, ASL_LEVEL_EMERG.
+ \param prefix A string to prefix to the message text.
+ \param suffix A string to suffix to the message text.
+ \param text The text of the message. Accepts all formatting specifiers available to NSString.
+ \sa <tt>man 3 asl</tt>
+ */
 - (void) messageWithLevel:(int)aslLevel prefix:(NSString *)prefix suffix:(NSString *)suffix message:(NSString *)text, ...;
 
+/**
+ \brief Logs a message with the given level, prefix and/or suffix string.
+ \param aslLevel The severity level of the message.
+ \param text The text of the message. Accepts all formatting specifiers available to NSString.
+ \param arguments A va_list of formatting arguments to the message.
+ */
 - (void) messageWithLevel:(int)aslLevel prefix:(NSString *)prefix suffix:(NSString *)suffix message:(NSString *)text arguments:(va_list)argList;
 
 /**
- \return An opened ASLClient instance appropriate for use on the current thread.
+ \return The ASLClient instance in use on the current thread.  Every thread will have its own independent ASLClient instance.
  */
 - (SOASLClient *) ASLClient;
 

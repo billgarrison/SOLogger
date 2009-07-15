@@ -40,7 +40,11 @@
 		[myMirroredFileDescriptors release];
 		myMirroredFileDescriptors = nil;
 		
-		//		NSLog(@"Deallocating %@", self);
+#if SOASLCLIENT_DEBUG
+		NSThread *currentThread = [NSThread currentThread];
+		NSLog(@"Deallocating %@ on %@ thread %@", self, ([currentThread isEqual:[NSThread mainThread]] ? @"main" : @"background"), currentThread);	
+#endif
+		
 		[super dealloc];
 }
 

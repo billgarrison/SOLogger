@@ -1,30 +1,15 @@
 #import <Foundation/Foundation.h>
 #import "SOASLLogger.h"
 
-// Convenience macros for getting file name, line number, and function/method info into the log.
-
-#define MyLogSuffix [NSString stringWithFormat:@" %s %@:%d ", __FUNCTION__, [[NSString stringWithFormat:@"%s", __FILE__] lastPathComponent], __LINE__ ]
-
-#define MyLog( logger, level, text, ... ) \
-[logger messageWithLevel:level prefix:nil suffix:MyLogSuffix message:text , ## __VA_ARGS__ ]
-
-#define LogDebug( logger, message, ... ) MyLog( logger, ASL_LEVEL_DEBUG, message, ## __VA_ARGS__ )
-#define LogInfo( logger, message, ... ) MyLog( logger, ASL_LEVEL_INFO, message, ## __VA_ARGS__ )
-#define LogNotice( logger, message, ... ) MyLog( logger, ASL_LEVEL_NOTICE, message, ## __VA_ARGS__ )
-#define LogWarn( logger, message, ... ) MyLog( logger, ASL_LEVEL_WARNING, message, ## __VA_ARGS__ )
-#define LogError( logger, message, ... ) MyLog( logger, ASL_LEVEL_ERR, message, ## __VA_ARGS__ )
-#define LogAlert( logger, message, ... ) MyLog( logger, ASL_LEVEL_ALERT, message, ## __VA_ARGS__ )
-#define LogCritical( logger, message, ... ) MyLog( logger, ASL_LEVEL_CRIT, message, ## __VA_ARGS__ )
-#define LogEmergency( logger, message, ... ) MyLog( logger, ASL_LEVEL_EMERG, message, ## __VA_ARGS__ )
-
-#define LogEnteringMethod(logger) LogDebug(logger, @"Entering method")
-#define LogExitingMethod(logger) LogDebug(logger, @"Exiting method")
+#define LogEnteringMethod(logger) [logger debug:@"Entering method %s", __PRETTY_FUNCTION__]
+#define LogExitingMethod(logger) [logger debug:@"Exiting method %s", __PRETTY_FUNCTION__]
 
 @interface ASLLoggerDemo : NSObject
 {
 		SOASLLogger *logger;
 		NSFileHandle *mirrorLogFile;
 }
+
 @end
 
 @implementation ASLLoggerDemo 
@@ -33,7 +18,7 @@
 {
 		self = [super init];
 		if ( self ) {
-				logger = [[SOASLLogger loggerForFacility:@"com.example.ASLLoggerDemo" options:ASL_OPT_STDERR | ASL_OPT_NO_REMOTE] retain];
+				logger = [[SOASLLogger loggerForFacility:@"com.example.ASLLoggerDemo" options:ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT_NO_REMOTE] retain];
 				
 				NSMutableArray *pathComponents = [[NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) mutableCopy] autorelease];
 				[pathComponents addObject:@"ASLDemoLog.txt"];
@@ -58,7 +43,7 @@
 		[mirrorLogFile release];
 		mirrorLogFile = nil;
 		
-		[logger release];
+		[logger release]; logger = nil;
 		[super dealloc];
 }
 
@@ -76,14 +61,15 @@
 {
 		LogEnteringMethod(logger);
 		
-		LogDebug( logger, @"A debugging note on: %@", [NSDate date]);
-		LogInfo( logger, @"We just did something." );
-		LogNotice( logger, @"That's going to leave a mark");
-		LogWarn( logger, @"WTF?");
-		LogAlert( logger, @"WTF!");
-		LogCritical( logger, @"OMG" );
-		LogEmergency( logger, @"OMG WTF!");
-
+		[logger debug:@"A debugging note on: %@", [NSDate date]];
+		[logger info:@"We just did something."];
+		[logger notice:@"That's going to leave a mark"];
+		[logger performSelectorInBackground:@selector(notice:) withObject:@"From a background thread"];
+		[logger warning:@"WTF?"];
+		[logger alert:@"WTF!"];
+		[logger critical:@"OMG"];
+		[logger panic:@"OMG WTF!"];
+		
 		LogExitingMethod(logger);
 }
 
@@ -92,7 +78,7 @@
 
 int main (int argc, const char * argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-		
+				
     // insert code here...
     NSLog(@"Hello, World!");
 		
@@ -101,6 +87,9 @@ int main (int argc, const char * argv[]) {
 		[demo testInfoMessage];
 		[demo testLogInBackgroundThread];
 		[demo testMyLog];
+		
+		// Drive the runloop for a bit so that we can get log messages that the ASLClients in background threads have cleaned up.
+		[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.25]];
 		
 		[demo release];
 		
