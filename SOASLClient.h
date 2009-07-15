@@ -50,14 +50,14 @@
 #pragma mark Logging Streams
 
 /**
- brief Adds the file descriptor to the list of those who will receive mirror copies of all logged messages.
+ \brief Adds the file descriptor to the list of those who will receive mirror copies of all logged messages.
  \param descriptor The file descriptor.  Can refer to a file, pipe, or socket.
  \return YES if the descriptor was successfully added to the ASL client connection; NO otherwise.
  */
 - (BOOL) addLoggingDescriptor:(NSNumber *)descriptor;
 
 /**
- brief Removes the file descriptor from the mirrored logging list.
+ \brief Removes the file descriptor from the mirrored logging list.
  \param descriptor The file descriptor.  Can refer to a file, pipe, or socket.
  \return YES if the descriptor was successfully removed to the ASL client connection; NO otherwise.
  Closing an ASL client connection causes all added file descriptors to be removed.  Use this method to remove a mirrored log adhoc before close.

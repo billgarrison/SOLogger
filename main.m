@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "SOASLLogger.h"
+#import "SOASLLogger/SOASLLogger.h"
 
 #define LogEnteringMethod(logger) [logger debug:@"Entering method %s", __PRETTY_FUNCTION__]
 #define LogExitingMethod(logger) [logger debug:@"Exiting method %s", __PRETTY_FUNCTION__]

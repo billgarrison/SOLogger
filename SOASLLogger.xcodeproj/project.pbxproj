@@ -1,0 +1,359 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8DD76F9A0486AA7600D96B5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
+		B1837EC3100E70BA00BA6C78 /* SOASLClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B1D644510FEC135600417978 /* SOASLClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1837EC4100E70BB00BA6C78 /* SOASLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D644520FEC135600417978 /* SOASLClient.m */; };
+		B1837EC5100E70BD00BA6C78 /* SOASLLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = B1C97B6D0FEC0FB400B0E341 /* SOASLLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1837EC6100E70BE00BA6C78 /* SOASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C97B6E0FEC0FB400B0E341 /* SOASLLogger.m */; };
+		B1837FE9100E836600BA6C78 /* SOASLLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1837EBD100E709B00BA6C78 /* SOASLLogger.framework */; };
+		B18380E1100E855900BA6C78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1837F63100E834400BA6C78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1837EBC100E709B00BA6C78;
+			remoteInfo = SOASLLogger;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08FB7796FE84155DC02AAC07 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32A70AAB03705E1F00C91783 /* SOASLLogger_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOASLLogger_Prefix.pch; sourceTree = "<group>"; };
+		8DD76FA10486AA7600D96B5E /* demo_soasllogger */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = demo_soasllogger; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1837EBD100E709B00BA6C78 /* SOASLLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOASLLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1837EBE100E709B00BA6C78 /* SOASLLogger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SOASLLogger-Info.plist"; sourceTree = "<group>"; };
+		B1838030100E84AC00BA6C78 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
+		B1C97B6D0FEC0FB400B0E341 /* SOASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOASLLogger.h; sourceTree = "<group>"; };
+		B1C97B6E0FEC0FB400B0E341 /* SOASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOASLLogger.m; sourceTree = "<group>"; };
+		B1D644510FEC135600417978 /* SOASLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOASLClient.h; sourceTree = "<group>"; };
+		B1D644520FEC135600417978 /* SOASLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOASLClient.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F9B0486AA7600D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1837FE9100E836600BA6C78 /* SOASLLogger.framework in Frameworks */,
+				8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1837EBB100E709B00BA6C78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B18380E1100E855900BA6C78 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* ASLLogger */ = {
+			isa = PBXGroup;
+			children = (
+				B183802D100E846A00BA6C78 /* Demo */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+				B1837EBE100E709B00BA6C78 /* SOASLLogger-Info.plist */,
+			);
+			name = ASLLogger;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				32A70AAB03705E1F00C91783 /* SOASLLogger_Prefix.pch */,
+				B1C97B6D0FEC0FB400B0E341 /* SOASLLogger.h */,
+				B1C97B6E0FEC0FB400B0E341 /* SOASLLogger.m */,
+				B1D644510FEC135600417978 /* SOASLClient.h */,
+				B1D644520FEC135600417978 /* SOASLClient.m */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				08FB779EFE84155DC02AAC07 /* Foundation.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76FA10486AA7600D96B5E /* demo_soasllogger */,
+				B1837EBD100E709B00BA6C78 /* SOASLLogger.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B183802D100E846A00BA6C78 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				B1838030100E84AC00BA6C78 /* Demo_Prefix.pch */,
+				08FB7796FE84155DC02AAC07 /* main.m */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B1837EB8100E709B00BA6C78 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1837EC3100E70BA00BA6C78 /* SOASLClient.h in Headers */,
+				B1837EC5100E70BD00BA6C78 /* SOASLLogger.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F960486AA7600D96B5E /* Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildPhases = (
+				8DD76F990486AA7600D96B5E /* Sources */,
+				8DD76F9B0486AA7600D96B5E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1837F64100E834400BA6C78 /* PBXTargetDependency */,
+			);
+			name = Demo;
+			productInstallPath = "$(HOME)/bin";
+			productName = ASLLogger;
+			productReference = 8DD76FA10486AA7600D96B5E /* demo_soasllogger */;
+			productType = "com.apple.product-type.tool";
+		};
+		B1837EBC100E709B00BA6C78 /* SOASLLogger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1837EC1100E709C00BA6C78 /* Build configuration list for PBXNativeTarget "SOASLLogger" */;
+			buildPhases = (
+				B1837EBA100E709B00BA6C78 /* Sources */,
+				B1837EBB100E709B00BA6C78 /* Frameworks */,
+				B1837EB8100E709B00BA6C78 /* Headers */,
+				B1837EB9100E709B00BA6C78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SOASLLogger;
+			productName = SOASLLogger;
+			productReference = B1837EBD100E709B00BA6C78 /* SOASLLogger.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "SOASLLogger" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* ASLLogger */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1837EBC100E709B00BA6C78 /* SOASLLogger */,
+				8DD76F960486AA7600D96B5E /* Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1837EB9100E709B00BA6C78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F990486AA7600D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD76F9A0486AA7600D96B5E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1837EBA100E709B00BA6C78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1837EC4100E70BB00BA6C78 /* SOASLClient.m in Sources */,
+				B1837EC6100E70BE00BA6C78 /* SOASLLogger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1837F64100E834400BA6C78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1837EBC100E709B00BA6C78 /* SOASLLogger */;
+			targetProxy = B1837F63100E834400BA6C78 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB927508733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_VARIANTS = normal;
+				COPY_PHASE_STRIP = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Demo_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = demo_soasllogger;
+			};
+			name = Debug;
+		};
+		1DEB927608733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Demo_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "SOASLLogger Demo";
+			};
+			name = Release;
+		};
+		1DEB927908733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				BUILD_VARIANTS = debug;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		1DEB927A08733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+		B1837EBF100E709C00BA6C78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_VARIANTS = normal;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SOASLLogger_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				INFOPLIST_FILE = "SOASLLogger-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PRODUCT_NAME = SOASLLogger;
+			};
+			name = Debug;
+		};
+		B1837EC0100E709C00BA6C78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_VARIANTS = normal;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SOASLLogger_Prefix.pch;
+				INFOPLIST_FILE = "SOASLLogger-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = SOASLLogger;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927508733DD40010E9CD /* Debug */,
+				1DEB927608733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "SOASLLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927908733DD40010E9CD /* Debug */,
+				1DEB927A08733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1837EC1100E709C00BA6C78 /* Build configuration list for PBXNativeTarget "SOASLLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1837EBF100E709C00BA6C78 /* Debug */,
+				B1837EC0100E709C00BA6C78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
