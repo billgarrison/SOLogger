@@ -17,7 +17,7 @@
 }
 
 /** The ASL client connection that we are are covering. */
-@property (nonatomic, readonly) aslclient aslclient;
+@property (nonatomic, readonly) aslclient asl_client;
 
 /** Array of file descriptors (NSNumber) to which log messages are being mirrored. */
 @property (nonatomic, readonly) NSArray *loggingDescriptors;

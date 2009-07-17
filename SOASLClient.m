@@ -10,7 +10,7 @@
 #import "SOASLClient.h"
 
 @implementation SOASLClient
-@synthesize aslclient = myClientConnection;
+@synthesize asl_client = myClientConnection;
 @dynamic loggingDescriptors;
 
 #pragma mark -

@@ -181,7 +181,7 @@ static NSString * const ASLClientKey = @"SOASLClient";
 		const char *normalizedFacility = self.facility ? [self.facility UTF8String] : "com.apple.console";
 		asl_set( msg, ASL_KEY_FACILITY, normalizedFacility);
 
-		int didLog = asl_log([client aslclient], msg, aslLevel, "%s", [constructedMessage UTF8String]);
+		asl_log([client asl_client], msg, aslLevel, "%s", [constructedMessage UTF8String]);
 		
 		asl_free( msg );
 	
@@ -189,9 +189,7 @@ static NSString * const ASLClientKey = @"SOASLClient";
 		NSThread *currentThread = [NSThread currentThread];
 		NSLog(@"%@ on %@ thread %@", client, ([currentThread isEqual:[NSThread mainThread]] ? @"main" : @"background"), currentThread);
 #endif
-		
-		assert( didLog == 0);
-		
+				
 		[pool release];
 }
 
