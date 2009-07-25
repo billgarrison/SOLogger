@@ -12,7 +12,7 @@
 
 @class SOASLClient;
 
-@interface SOASLLogger : NSObject {
+@interface SOLogger : NSObject {
 		NSString *myFacility;
 		uint32_t myClientOptions;
 		NSMutableArray *myMirrorFileDescriptors;
@@ -30,7 +30,7 @@
  \param facility The identifier of the facility associated with this logger.  Pass nil and the messages are logged to @"com.apple.console".
  \param options A bitflag of ASL options that will be passed to the <tt>asl_open</tt> function.
  */
-+ (SOASLLogger *) loggerForFacility:(NSString *)facility options:(uint32_t)options;
++ (SOLogger *) loggerForFacility:(NSString *)facility options:(uint32_t)options;
 
 /**
  \param facility The facility for which this logger will be logging.  Recommended that you use a reverse-DNS style naming scheme to avoid name collisions. Pass nil and the messages are logged to @"com.apple.console".

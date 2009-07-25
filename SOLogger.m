@@ -7,12 +7,12 @@
 //  $LastChangedBy$
 //  $LastChangedDate$
 
-#import "SOASLLogger.h"
+#import "SOLogger.h"
 #import "SOASLClient.h"
 
 static NSString * const ASLClientKey = @"SOASLClient";
 
-@implementation SOASLLogger
+@implementation SOLogger
 
 @synthesize facility = myFacility;
 @synthesize clientOptions = myClientOptions;
@@ -21,9 +21,9 @@ static NSString * const ASLClientKey = @"SOASLClient";
 #pragma mark -
 #pragma mark Creation
 
-+ (SOASLLogger *) loggerForFacility:(NSString *)facility options:(uint32_t)options;
++ (SOLogger *) loggerForFacility:(NSString *)facility options:(uint32_t)options;
 {
-		SOASLLogger *logger = [[[SOASLLogger alloc] initWithFacility:facility options:options] autorelease];
+		SOLogger *logger = [[[SOLogger alloc] initWithFacility:facility options:options] autorelease];
 		return logger;
 }
 

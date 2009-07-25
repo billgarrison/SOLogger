@@ -1,12 +1,12 @@
 #import <Foundation/Foundation.h>
-#import "SOASLLogger/SOASLLogger.h"
+#import "SOLogger/SOLogger.h"
 
 #define LogEnteringMethod(logger) [logger debug:@"Entering method %s", __PRETTY_FUNCTION__]
 #define LogExitingMethod(logger) [logger debug:@"Exiting method %s", __PRETTY_FUNCTION__]
 
 @interface ASLLoggerDemo : NSObject
 {
-		SOASLLogger *logger;
+		SOLogger *logger;
 		NSFileHandle *mirrorLogFile;
 }
 
@@ -18,7 +18,7 @@
 {
 		self = [super init];
 		if ( self ) {
-				logger = [[SOASLLogger loggerForFacility:@"com.example.ASLLoggerDemo" options:ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT_NO_REMOTE] retain];
+				logger = [[SOLogger loggerForFacility:@"com.example.ASLLoggerDemo" options:ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT_NO_REMOTE] retain];
 				
 				NSMutableArray *pathComponents = [[NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) mutableCopy] autorelease];
 				[pathComponents addObject:@"ASLDemoLog.txt"];
