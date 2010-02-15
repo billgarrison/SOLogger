@@ -11,16 +11,13 @@
 #import <Foundation/Foundation.h>
 #import <asl.h>
 
-@interface SOASLClient : NSObject {
+@interface SOASLClient : NSObject 
+{
 		aslclient myClientConnection;
-		NSMutableArray *myMirroredFileDescriptors;
 }
 
 /** The ASL client connection that we are are covering. */
 @property (nonatomic, readonly) aslclient asl_client;
-
-/** Array of file descriptors (NSNumber) to which log messages are being mirrored. */
-@property (nonatomic, readonly) NSArray *loggingDescriptors;
 
 /**
  \return An autoreleased instance.  The client connection is not opened.
@@ -54,7 +51,7 @@
  \param descriptor The file descriptor.  Can refer to a file, pipe, or socket.
  \return YES if the descriptor was successfully added to the ASL client connection; NO otherwise.
  */
-- (BOOL) addLoggingDescriptor:(NSNumber *)descriptor;
+- (BOOL) addLoggingDescriptor:(int)descriptor;
 
 /**
  \brief Removes the file descriptor from the mirrored logging list.
@@ -62,7 +59,7 @@
  \return YES if the descriptor was successfully removed to the ASL client connection; NO otherwise.
  Closing an ASL client connection causes all added file descriptors to be removed.  Use this method to remove a mirrored log adhoc before close.
  */
-- (BOOL) removeLoggingDescriptor:(NSNumber *)descriptor;
+- (BOOL) removeLoggingDescriptor:(int)descriptor;
 
 @end
 

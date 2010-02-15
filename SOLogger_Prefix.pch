@@ -4,5 +4,5 @@
 
 #if DEBUG
 #define SOASLLOGGER_DEBUG 0
-#define SOASLCLIENT_DEBUG 0
+#define SOASLCLIENT_DEBUG 1
 #endif
