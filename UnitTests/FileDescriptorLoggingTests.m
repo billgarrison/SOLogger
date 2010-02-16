@@ -12,8 +12,8 @@
 @interface FileDescriptorLoggingTests : SenTestCase
 {
 	SOLogger *logger;
-	NSData *dataFromTempFile;
 	BOOL dataIsAvailableFromTempFile;
+	BOOL dataIsAvailableFromStdError;
 }
 @end
 
@@ -29,14 +29,12 @@
 	NSMutableString *facility = [NSMutableString string];
 	[facility appendString:[[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleIdentifier"]];
 	[facility appendFormat:@".%@", NSStringFromClass([self class])];
-	logger = [[SOLogger alloc] initWithFacility:facility options:0];
-	[facility release];
+	logger = [[SOLogger alloc] initWithFacility:facility options:SOLoggerDefaultASLOptions];
 }
 
 - (void) tearDown;
 {
 	[logger release];
-	[dataFromTempFile release]; 
 	
 	// Use this method to clean up after any resource allocation done in -setUp.	
 	[super tearDown];
@@ -55,41 +53,36 @@
 	
 	// Set up
 	NSFileHandle *tempFileHandle = [NSFileHandle fileHandleForReadingAtPath:[NSString stringWithUTF8String:template]];
-	
 	STAssertNotNil( tempFileHandle, @"precondition violated" );
 
+	dataIsAvailableFromTempFile = NO;
+
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tempFileHasData:) name:NSFileHandleDataAvailableNotification object:tempFileHandle];
-	[tempFileHandle waitForDataInBackgroundAndNotifyForModes:[NSArray arrayWithObject:NSRunLoopCommonModes]];
-	
-	NSDate *fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:0.75];
-	[[NSRunLoop currentRunLoop] runUntilDate:fireDate];
+	[tempFileHandle waitForDataInBackgroundAndNotify];
 
 	[logger addFileDescriptor:tempFD];
 	NSString *testLogMessage = [NSString stringWithString:@"Frankie Goes to Hollywood"];
 	[logger info:testLogMessage];
 	
-	[[NSRunLoop currentRunLoop] run];
-	
-	ReleaseAndNil( tempFileHandle );
-}
-
-- (void) tempFileHasData:(NSNotification *) note;
-{
-	LOG_ENTRY;
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:NSFileHandleDataAvailableNotification object:nil];
-	
-	dataIsAvailableFromTempFile = YES;
-	
-	NSFileHandle *fh = [note object];
-	dataFromTempFile = [[fh readDataToEndOfFile] retain];
+	do {
+		NSDate *fireDate = [[NSDate alloc] initWithTimeIntervalSinceNow:0.25];
+		[[NSRunLoop currentRunLoop] runUntilDate:fireDate];
+		[fireDate release];
+	} while ( !dataIsAvailableFromTempFile );
 	
 	// Expect std error to contain the logged message
-	NSString *testLogMessage = [NSString stringWithString:@"Frankie Goes to Hollywood"];
 	NSData *expectedData = [testLogMessage dataUsingEncoding:NSUTF8StringEncoding];
-	NSData *actualData = dataFromTempFile;
+	NSData *actualData = [tempFileHandle readDataToEndOfFile];
 	NSRange foundRange = [actualData rangeOfData:expectedData options:0 range:NSMakeRange(0, [actualData length])];
 	STAssertTrue( foundRange.length != 0, @"postcondition violated" );
 	
-	LOG_EXIT;
+	close(tempFD);
+}
+
+// Handle the async wait-for-data request from -testLogsToTempFile
+- (void) tempFileHasData:(NSNotification *) note;
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:NSFileHandleDataAvailableNotification object:nil];
+	dataIsAvailableFromTempFile = YES;
 }
 @end

@@ -24,6 +24,7 @@
 		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		B1837FE9100E836600BA6C78 /* SOLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1837EBD100E709B00BA6C78 /* SOLogger.framework */; };
 		B18380E1100E855900BA6C78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
+		F20C9D36112A637800C44CDE /* MultipleLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */; };
 		F29A0AA11129DB900066D400 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AA01129DB900066D400 /* main.m */; };
 		F29A0AAE1129DB9B0066D400 /* SOASLClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AA91129DB9B0066D400 /* SOASLClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29A0AAF1129DB9B0066D400 /* SOASLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAA1129DB9B0066D400 /* SOASLClient.m */; };
@@ -54,6 +55,7 @@
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		B1837EBD100E709B00BA6C78 /* SOLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1837EBE100E709B00BA6C78 /* SOLogger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SOLogger-Info.plist"; sourceTree = "<group>"; };
+		F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipleLoggerTests.m; path = UnitTests/MultipleLoggerTests.m; sourceTree = "<group>"; };
 		F29A0A851129DB100066D400 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29A0A9F1129DB900066D400 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
 		F29A0AA01129DB900066D400 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -71,7 +73,6 @@
 		F29A0AE61129DD420066D400 /* UnitTests-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "UnitTests-Release.xcconfig"; sourceTree = "<group>"; };
 		F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileDescriptorLoggingTests.m; path = UnitTests/FileDescriptorLoggingTests.m; sourceTree = "<group>"; };
 		F29A0B231129E09A0066D400 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F29A0B271129E0B80066D400 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = ../../Library/Frameworks/SenTestingKit.framework; sourceTree = SDKROOT; };
 		F29A0DC91129EE980066D400 /* sologger_demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sologger_demo; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29A0EA01129FEB20066D400 /* UsefulMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsefulMacros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +118,6 @@
 				1AB674ADFE9D54B511CA2CBB /* Products */,
 				B1837EBE100E709B00BA6C78 /* SOLogger-Info.plist */,
 				F29A0B231129E09A0066D400 /* Foundation.framework */,
-				F29A0B271129E0B80066D400 /* SenTestingKit.framework */,
 			);
 			name = ASLLogger;
 			sourceTree = "<group>";
@@ -144,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */,
+				F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */,
 				F29A0AB71129DBB30066D400 /* UnitTests-Info.plist */,
 				F29A0ACA1129DC4A0066D400 /* UnitTests_Prefix.pch */,
 				F29A0ADA1129DCA60066D400 /* UnitTestDebugSetup.applescript */,
@@ -336,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F29A0B0B1129DEC60066D400 /* FileDescriptorLoggingTests.m in Sources */,
+				F20C9D36112A637800C44CDE /* MultipleLoggerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
