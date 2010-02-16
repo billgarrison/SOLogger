@@ -8,7 +8,6 @@
 //  $LastChangedDate$
 
 #import "SOLogger.h"
-#import "SOASLClient.h"
 
 uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT_NO_REMOTE;
 

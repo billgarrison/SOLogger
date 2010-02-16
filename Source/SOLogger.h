@@ -32,6 +32,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "SOASLClient.h"
 #include <asl.h>
 
 /**
@@ -39,8 +40,6 @@
  Currently defined as ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT_NO_REMOTE.
  */
 extern uint32_t SOLoggerDefaultASLOptions;
-
-@class SOASLClient;
 
 @interface SOLogger : NSObject 
 {

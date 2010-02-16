@@ -1,0 +1,11 @@
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+	#import <SenTestingKit/SenTestingKit.h>
+	#import "SOLogger/SOLogger.h"
+	#import "UsefulMacros.h"
+#endif
+
+#if DEBUG
+#define SOASLLOGGER_DEBUG 0
+#define SOASLCLIENT_DEBUG 1
+#endif

@@ -6,15 +6,31 @@
 	objectVersion = 45;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		F29A0ADF1129DD0E0066D400 /* SetupUnitTestDebugEnvironment */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = F29A0AE71129DD420066D400 /* Build configuration list for PBXAggregateTarget "SetupUnitTestDebugEnvironment" */;
+			buildPhases = (
+				F29A0ADE1129DD0E0066D400 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = SetupUnitTestDebugEnvironment;
+			productName = SetupUnitTestDebugEnvironment;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		8DD76F9A0486AA7600D96B5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
-		B1837EC3100E70BA00BA6C78 /* SOASLClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B1D644510FEC135600417978 /* SOASLClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B1837EC4100E70BB00BA6C78 /* SOASLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D644520FEC135600417978 /* SOASLClient.m */; };
-		B1837EC5100E70BD00BA6C78 /* SOLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = B1C97B6D0FEC0FB400B0E341 /* SOLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B1837EC6100E70BE00BA6C78 /* SOLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C97B6E0FEC0FB400B0E341 /* SOLogger.m */; };
 		B1837FE9100E836600BA6C78 /* SOLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1837EBD100E709B00BA6C78 /* SOLogger.framework */; };
 		B18380E1100E855900BA6C78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
+		F29A0AA11129DB900066D400 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AA01129DB900066D400 /* main.m */; };
+		F29A0AAE1129DB9B0066D400 /* SOASLClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AA91129DB9B0066D400 /* SOASLClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F29A0AAF1129DB9B0066D400 /* SOASLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAA1129DB9B0066D400 /* SOASLClient.m */; };
+		F29A0AB01129DB9B0066D400 /* SOLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AAB1129DB9B0066D400 /* SOLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F29A0AB11129DB9B0066D400 /* SOLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAC1129DB9B0066D400 /* SOLogger.m */; };
+		F29A0B0B1129DEC60066D400 /* FileDescriptorLoggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */; };
+		F29A0B701129E25A0066D400 /* SOLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1837EBD100E709B00BA6C78 /* SOLogger.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,20 +41,39 @@
 			remoteGlobalIDString = B1837EBC100E709B00BA6C78;
 			remoteInfo = SOASLLogger;
 		};
+		F29A0AF71129DE200066D400 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1837EBC100E709B00BA6C78;
+			remoteInfo = SOLogger;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08FB7796FE84155DC02AAC07 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		32A70AAB03705E1F00C91783 /* SOLogger_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger_Prefix.pch; sourceTree = "<group>"; };
-		8DD76FA10486AA7600D96B5E /* demo_soasllogger */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = demo_soasllogger; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1837EBD100E709B00BA6C78 /* SOLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1837EBE100E709B00BA6C78 /* SOLogger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SOLogger-Info.plist"; sourceTree = "<group>"; };
-		B1838030100E84AC00BA6C78 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
-		B1C97B6D0FEC0FB400B0E341 /* SOLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger.h; sourceTree = "<group>"; };
-		B1C97B6E0FEC0FB400B0E341 /* SOLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOLogger.m; sourceTree = "<group>"; };
-		B1D644510FEC135600417978 /* SOASLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOASLClient.h; sourceTree = "<group>"; };
-		B1D644520FEC135600417978 /* SOASLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOASLClient.m; sourceTree = "<group>"; };
+		F29A0A851129DB100066D400 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F29A0A9F1129DB900066D400 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
+		F29A0AA01129DB900066D400 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F29A0AA91129DB9B0066D400 /* SOASLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOASLClient.h; sourceTree = "<group>"; };
+		F29A0AAA1129DB9B0066D400 /* SOASLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOASLClient.m; sourceTree = "<group>"; };
+		F29A0AAB1129DB9B0066D400 /* SOLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger.h; sourceTree = "<group>"; };
+		F29A0AAC1129DB9B0066D400 /* SOLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOLogger.m; sourceTree = "<group>"; };
+		F29A0AAD1129DB9B0066D400 /* SOLogger_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger_Prefix.pch; sourceTree = "<group>"; };
+		F29A0AB71129DBB30066D400 /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTests-Info.plist"; path = "UnitTests/UnitTests-Info.plist"; sourceTree = "<group>"; };
+		F29A0ACA1129DC4A0066D400 /* UnitTests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitTests_Prefix.pch; path = UnitTests/UnitTests_Prefix.pch; sourceTree = "<group>"; };
+		F29A0ADA1129DCA60066D400 /* UnitTestDebugSetup.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; name = UnitTestDebugSetup.applescript; path = UnitTests/UnitTestDebugSetup.applescript; sourceTree = "<group>"; };
+		F29A0AE31129DD420066D400 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		F29A0AE41129DD420066D400 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		F29A0AE51129DD420066D400 /* UnitTests-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "UnitTests-Debug.xcconfig"; sourceTree = "<group>"; };
+		F29A0AE61129DD420066D400 /* UnitTests-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "UnitTests-Release.xcconfig"; sourceTree = "<group>"; };
+		F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileDescriptorLoggingTests.m; path = UnitTests/FileDescriptorLoggingTests.m; sourceTree = "<group>"; };
+		F29A0B231129E09A0066D400 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F29A0B271129E0B80066D400 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = ../../Library/Frameworks/SenTestingKit.framework; sourceTree = SDKROOT; };
+		F29A0DC91129EE980066D400 /* sologger_demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sologger_demo; sourceTree = BUILT_PRODUCTS_DIR; };
+		F29A0EA01129FEB20066D400 /* UsefulMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsefulMacros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,31 +94,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F29A0A821129DB100066D400 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F29A0B701129E25A0066D400 /* SOLogger.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		08FB7794FE84155DC02AAC07 /* ASLLogger */ = {
 			isa = PBXGroup;
 			children = (
-				B183802D100E846A00BA6C78 /* Demo */,
-				08FB7795FE84155DC02AAC07 /* Source */,
+				F29A0AA81129DB9B0066D400 /* Source */,
+				F29A0A9E1129DB900066D400 /* Demo */,
+				F29A0A8D1129DB220066D400 /* UnitTests */,
+				F29A0EA11129FEBE0066D400 /* Other Sources */,
+				F29A0AE21129DD420066D400 /* Build Configurations */,
 				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
 				B1837EBE100E709B00BA6C78 /* SOLogger-Info.plist */,
+				F29A0B231129E09A0066D400 /* Foundation.framework */,
+				F29A0B271129E0B80066D400 /* SenTestingKit.framework */,
 			);
 			name = ASLLogger;
-			sourceTree = "<group>";
-		};
-		08FB7795FE84155DC02AAC07 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				32A70AAB03705E1F00C91783 /* SOLogger_Prefix.pch */,
-				B1C97B6D0FEC0FB400B0E341 /* SOLogger.h */,
-				B1C97B6E0FEC0FB400B0E341 /* SOLogger.m */,
-				B1D644510FEC135600417978 /* SOASLClient.h */,
-				B1D644520FEC135600417978 /* SOASLClient.m */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
@@ -97,19 +133,62 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DD76FA10486AA7600D96B5E /* demo_soasllogger */,
 				B1837EBD100E709B00BA6C78 /* SOLogger.framework */,
+				F29A0A851129DB100066D400 /* UnitTests.octest */,
+				F29A0DC91129EE980066D400 /* sologger_demo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B183802D100E846A00BA6C78 /* Demo */ = {
+		F29A0A8D1129DB220066D400 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				B1838030100E84AC00BA6C78 /* Demo_Prefix.pch */,
-				08FB7796FE84155DC02AAC07 /* main.m */,
+				F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */,
+				F29A0AB71129DBB30066D400 /* UnitTests-Info.plist */,
+				F29A0ACA1129DC4A0066D400 /* UnitTests_Prefix.pch */,
+				F29A0ADA1129DCA60066D400 /* UnitTestDebugSetup.applescript */,
 			);
-			name = Demo;
+			name = UnitTests;
+			sourceTree = "<group>";
+		};
+		F29A0A9E1129DB900066D400 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				F29A0A9F1129DB900066D400 /* Demo_Prefix.pch */,
+				F29A0AA01129DB900066D400 /* main.m */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		F29A0AA81129DB9B0066D400 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F29A0AA91129DB9B0066D400 /* SOASLClient.h */,
+				F29A0AAA1129DB9B0066D400 /* SOASLClient.m */,
+				F29A0AAB1129DB9B0066D400 /* SOLogger.h */,
+				F29A0AAC1129DB9B0066D400 /* SOLogger.m */,
+				F29A0AAD1129DB9B0066D400 /* SOLogger_Prefix.pch */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		F29A0AE21129DD420066D400 /* Build Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				F29A0AE31129DD420066D400 /* Debug.xcconfig */,
+				F29A0AE41129DD420066D400 /* Release.xcconfig */,
+				F29A0AE51129DD420066D400 /* UnitTests-Debug.xcconfig */,
+				F29A0AE61129DD420066D400 /* UnitTests-Release.xcconfig */,
+			);
+			name = "Build Configurations";
+			sourceTree = "<group>";
+		};
+		F29A0EA11129FEBE0066D400 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F29A0EA01129FEB20066D400 /* UsefulMacros.h */,
+			);
+			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,8 +198,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1837EC3100E70BA00BA6C78 /* SOASLClient.h in Headers */,
-				B1837EC5100E70BD00BA6C78 /* SOLogger.h in Headers */,
+				F29A0AAE1129DB9B0066D400 /* SOASLClient.h in Headers */,
+				F29A0AB01129DB9B0066D400 /* SOLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +221,7 @@
 			name = Demo;
 			productInstallPath = "$(HOME)/bin";
 			productName = ASLLogger;
-			productReference = 8DD76FA10486AA7600D96B5E /* demo_soasllogger */;
+			productReference = F29A0DC91129EE980066D400 /* sologger_demo */;
 			productType = "com.apple.product-type.tool";
 		};
 		B1837EBC100E709B00BA6C78 /* SOLogger */ = {
@@ -163,6 +242,24 @@
 			productReference = B1837EBD100E709B00BA6C78 /* SOLogger.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		F29A0A841129DB100066D400 /* UnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F29A0A891129DB110066D400 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildPhases = (
+				F29A0A811129DB100066D400 /* Sources */,
+				F29A0A821129DB100066D400 /* Frameworks */,
+				F29A0A801129DB100066D400 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F29A0AF81129DE200066D400 /* PBXTargetDependency */,
+			);
+			name = UnitTests;
+			productName = UnitTests;
+			productReference = F29A0A851129DB100066D400 /* UnitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -177,6 +274,8 @@
 			targets = (
 				B1837EBC100E709B00BA6C78 /* SOLogger */,
 				8DD76F960486AA7600D96B5E /* Demo */,
+				F29A0A841129DB100066D400 /* UnitTests */,
+				F29A0ADF1129DD0E0066D400 /* SetupUnitTestDebugEnvironment */,
 			);
 		};
 /* End PBXProject section */
@@ -189,14 +288,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F29A0A801129DB100066D400 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F29A0ADE1129DD0E0066D400 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/osascript \"${PROJECT_DIR}/UnitTests/UnitTestDebugSetup.applescript\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8DD76F990486AA7600D96B5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DD76F9A0486AA7600D96B5E /* main.m in Sources */,
+				F29A0AA11129DB900066D400 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,8 +326,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1837EC4100E70BB00BA6C78 /* SOASLClient.m in Sources */,
-				B1837EC6100E70BE00BA6C78 /* SOLogger.m in Sources */,
+				F29A0AAF1129DB9B0066D400 /* SOASLClient.m in Sources */,
+				F29A0AB11129DB9B0066D400 /* SOLogger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F29A0A811129DB100066D400 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F29A0B0B1129DEC60066D400 /* FileDescriptorLoggingTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,21 +347,23 @@
 			target = B1837EBC100E709B00BA6C78 /* SOLogger */;
 			targetProxy = B1837F63100E834400BA6C78 /* PBXContainerItemProxy */;
 		};
+		F29A0AF81129DE200066D400 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1837EBC100E709B00BA6C78 /* SOLogger */;
+			targetProxy = F29A0AF71129DE200066D400 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB927508733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUILD_VARIANTS = normal;
-				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Demo_Prefix.pch;
+				GCC_PREFIX_HEADER = Demo/Demo_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
-				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = demo_soasllogger;
+				PRODUCT_NAME = sologger_demo;
 			};
 			name = Debug;
 		};
@@ -240,85 +372,72 @@
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Demo_Prefix.pch;
+				GCC_PREFIX_HEADER = Demo/Demo_Prefix.pch;
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = "SOLogger Demo";
+				PRODUCT_NAME = sologger_demo;
 			};
 			name = Release;
 		};
 		1DEB927908733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				BUILD_VARIANTS = debug;
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
 			};
 			name = Debug;
 		};
 		1DEB927A08733DD40010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.5;
 			};
 			name = Release;
 		};
 		B1837EBF100E709C00BA6C78 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F29A0AE31129DD420066D400 /* Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUILD_VARIANTS = normal;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SOLogger_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
-				INFOPLIST_FILE = "SOLogger-Info.plist";
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-				);
-				PRODUCT_NAME = SOLogger;
 			};
 			name = Debug;
 		};
 		B1837EC0100E709C00BA6C78 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F29A0AE41129DD420066D400 /* Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUILD_VARIANTS = normal;
+			};
+			name = Release;
+		};
+		F29A0A871129DB110066D400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F29A0AE51129DD420066D400 /* UnitTests-Debug.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		F29A0A881129DB110066D400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F29A0AE61129DD420066D400 /* UnitTests-Release.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+			};
+			name = Release;
+		};
+		F29A0AE01129DD0E0066D400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = SetupUnitTestDebugEnvironment;
+			};
+			name = Debug;
+		};
+		F29A0AE11129DD0E0066D400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SOLogger_Prefix.pch;
-				INFOPLIST_FILE = "SOLogger-Info.plist";
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = SOLogger;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = SetupUnitTestDebugEnvironment;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -349,6 +468,24 @@
 			buildConfigurations = (
 				B1837EBF100E709C00BA6C78 /* Debug */,
 				B1837EC0100E709C00BA6C78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F29A0A891129DB110066D400 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F29A0A871129DB110066D400 /* Debug */,
+				F29A0A881129DB110066D400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F29A0AE71129DD420066D400 /* Build configuration list for PBXAggregateTarget "SetupUnitTestDebugEnvironment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F29A0AE01129DD0E0066D400 /* Debug */,
+				F29A0AE11129DD0E0066D400 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

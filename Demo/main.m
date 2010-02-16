@@ -1,6 +1,7 @@
+// SOLogger Demo
+
 #import <Foundation/Foundation.h>
 #import "SOLogger/SOLogger.h"
-#import "SOLogger/SOASLClient.h"
 
 #define LogEnteringMethod(logger) [logger debug:@"Entering method %s", __PRETTY_FUNCTION__]
 #define LogExitingMethod(logger) [logger debug:@"Exiting method %s", __PRETTY_FUNCTION__]
