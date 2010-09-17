@@ -1,5 +1,5 @@
 //
-//  SOLogger.h
+//  SOASLogger.h
 //
 //  Copyright 2009 Standard Orbit Software, LLC. All rights reserved.
 //
@@ -17,14 +17,14 @@
  
  SOLogger and Threads
  
- Each SOLogger instance uses an SOASLClient instance to interact with the ASL service, one SOASLClient for each thread.  The SOASLClient is configured with the logger's facility, client options, and list of additional file descriptors. 
+ Each SOLogger instance uses an SOASLClient instance to interact with the ASL service, one SOASLClient per active thread.  At the time of creation, a SOASLClient is configured with the logger's facility, client options, and list of additional file descriptors. 
  
- That ASLClient instance in the #NSThread::threadInfo dictionary under the key #ASLClientKey.  Each thread's ASLClient instance is configured using the SOLogger's current property values.  For any given new thread, the ASLClient instance is lazily created by the #ASLClient method, stored in the thread's threadInfo dictionary, and reused as configured for the life of the thread.
+ All ASLClient instances live as long as their associated thread.  Consequently, the main thread's ASLClient instance exists for the life of the application.  ASLClients on secondary threads may be arbitrarily long-lived or short-lived.
  
- 
+ For any thread accessing an SOLogger instance, the ASLClient instance used for logging is found in the #NSThread::threadInfo dictionary under the key #ASLClientKey.  Each thread's ASLClient instance is configured using the SOLogger's current property values. A thread's ASLClient instance is lazily created by the receiver's #ASLClient method, stored in the current thread's threadInfo dictionary, and reused as initially configured for the life of the thread.
  
  Known Issues
-  
+ 
  After modifying the logger's file descriptor list, the current thread and all future threads will get an ASLClient instance configured with this now-updated file descriptors list.  ASLClient instances in other concurrently existing threads are *not* updated.  It is possible for two long-running threads to have ASLClients with different file descriptor lists.
  
  I don't anticipate that this behavior will cause a problem in practice.  I'm noting it here, though, so that you're aware of it.
@@ -32,7 +32,6 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "SOASLClient.h"
 #include <asl.h>
 
 /**
@@ -41,14 +40,20 @@
  */
 extern uint32_t SOLoggerDefaultASLOptions;
 
+@class SOASLClient;
+
 @interface SOLogger : NSObject 
 {
 @private
-	NSString *myFacility;
-	uint32_t myASLClientOptions;
-	NSMutableArray *myFileDescriptors;
-	
-	SOASLClient *myMainASLClient;
+    NSString *myFacility;
+    uint32_t myClientOptions;
+    NSMutableArray *myAdditionalFileDescriptors;
+    SOASLClient *myMainThreadASLClient;
+    
+    // To enable multiple SOLoggers to operate in a given thread, the per-thread ASLClient for each must be stored uniquely in the thread's threadInfo dictionary.
+    // We generate a dictionary key of the form <ASLClientKey>-<memory address of the SOLogger receiver>.
+    // E.g. For an SOLogger instance at 0x3238493, the per-logger ASLClient key for accessing the threadInfo dictionary will be @"ASLClientForLogger0x3238493"
+    NSString *myPerLoggerASLClientKey;
 }
 
 #pragma mark -
@@ -59,7 +64,7 @@ extern uint32_t SOLoggerDefaultASLOptions;
  \param facility The identifier of the facility associated with this logger.  Pass nil and the messages are logged to @"com.apple.console".
  \param options A bitflag of ASL options that will be passed to the <tt>asl_open</tt> function.
  */
-+ (SOLogger *) loggerForFacility:(NSString *)facility options:(uint32_t)options;
++ (SOLogger *) loggerForFacility: (NSString *) facility options: (uint32_t) options;
 
 /**
  \brief Designated initializer
@@ -68,8 +73,7 @@ extern uint32_t SOLoggerDefaultASLOptions;
  The facility can be used to identify the application or a particular subsystem within the application.  Messages are tagged with this facility identifier when added to the ASL database.  The option <tt>ASL_OPT_STDERR</tt> configures the logger to echo logged messages to stderr; required to see log messages in the Xcode console.
  \sa <tt>man 3 asl</tt> for documentation on the function <tt>asl_open</tt> for the available option flags.
  */
-- (id) initWithFacility:(NSString *)facility options:(uint32_t)options;
-
+- (id) initWithFacility: (NSString *) facility options: (uint32_t) options;
 
 #pragma mark -
 #pragma mark Additional Logging Files
@@ -77,8 +81,15 @@ extern uint32_t SOLoggerDefaultASLOptions;
 /**
  \brief Add a file descriptor to the logger.
  \param fd The file descriptor.
- 
  ASL allows additional file descriptors to be added to a logging client, each getting sent a copy of the logged message.  The file descriptor must be open for writing.
+ 
+ Adding a file descriptor to the logger has the following effects in multi-threaded operation:
+ 1. On the current thread (the thread on which #addFileDescriptor has been received), the current thread's ASLClient inherits the modified set of file descriptors.
+ 2. Any new thread that uses the receiver will inherit the modified set of additional file descriptors, by virtue of new ASLClient initialization.
+ 3. All other existing threads that have ASLClient instances will be unaware of the new file description addition.
+ 
+ In normal usage, ensure that you
+ When invoked from the main thread, the logger's main thread ASLClient is updated to reflect the additional file descriptor.  
  */
 - (void) addFileDescriptor:(int)fd;
 
@@ -98,78 +109,70 @@ extern uint32_t SOLoggerDefaultASLOptions;
  \param message The message.  Accepts all formatting specifiers available to NSString.
  In the default syslog configuration, debug- and info-level messages are not logged to the ASL database.  They are logged to stderr and any additional file descriptors attached to the logger.
  */
-- (void) debug:(NSString *)message, ...;
+- (void) debug: (NSString *) message, ...;
 
 /**
  \brief Log a debug level message.
  \param message The message.  Accepts all formatting specifiers available to NSString.
  In the default syslog configuration, debug- and info-level messages are not logged to the ASL database.  They are logged to stderr and any additional file descriptors attached to the logger.
  */
-- (void) info:(NSString *)message, ...;
+- (void) info: (NSString *) message, ...;
 
 /**
  \brief Log a notice level message.
  \param message The message.  Accepts all formatting specifiers available to NSString.
  In the default syslog configuration, this is the lowest level message to be logged in the ASL database.
  */
-- (void) notice:(NSString *)message, ...;
+- (void) notice: (NSString *) message, ...;
 
 /**
  \brief Log a warning level message.
  \param message The message.  Accepts all formatting specifiers available to NSString.
  */
-- (void) warning:(NSString *)message, ...;
+- (void) warning: (NSString *) message, ...;
 
 /**
  \brief Log an error level message.
  \param message The message.  Accepts all formatting specifiers available to NSString.
  */
-- (void) error:(NSString *)message, ...;
+- (void) error: (NSString *) message, ...;
 
 /**
  \brief Log an alert level message.
  \param message The message.  Accepts all formatting specifiers available to NSString.
  */
-- (void) alert:(NSString *)message, ...;
+- (void) alert: (NSString *) message, ...;
 
 /**
  \brief Log a critical level message.
  \param message The message.  Accepts all formatting specifiers available to NSString.
  */
-- (void) critical:(NSString *)message, ...;
+- (void) critical: (NSString *) message, ...;
 
 /**
  \brief Log a panic or emergency level message.
  \param message The message.  Accepts all formatting specifiers available to NSString.
  This is the highest level message.
  */
-- (void) panic:(NSString *)message, ...;
+- (void) panic: (NSString *) message, ...;
 
 #pragma mark -
 #pragma mark Logging Primitives
 
 /**
- \brief Logs a message with the given level, prefix and/or suffix string.
+ \brief Logs a message with the given level.
  \param aslLevel The severity level of the message. From least to most severe: ASL_LEVEL_DEBUG, ASL_LEVEL_INFO, ASL_LEVEL_NOTICE, ASL_LEVEL_WARNING, ASL_LEVEL_ERR, ASL_LEVEL_CRIT, ASL_LEVEL_ALERT, ASL_LEVEL_EMERG.
- \param prefix A string to prefix to the message text.
- \param suffix A string to suffix to the message text.
- \param text The text of the message. Accepts all formatting specifiers available to NSString.
+ \param format The text of the message. Accepts all formatting specifiers available to NSString.
  \sa <tt>man 3 asl</tt>
  */
-- (void) messageWithLevel:(int)aslLevel prefix:(NSString *)prefix suffix:(NSString *)suffix message:(NSString *)text, ...;
+
+- (void) logWithLevel:(int)aslLevel format:(NSString *)format arguments:(va_list)arguments;
+
 
 /**
- \brief Logs a message with the given level, prefix and/or suffix string.
- \param aslLevel The severity level of the message.
- \param text The text of the message. Accepts all formatting specifiers available to NSString.
- \param arguments A va_list of formatting arguments to the message.
+ \return The ASLClient instance in use on the current thread.  Every thread will have its own independent ASLClient instance.
  */
-- (void) messageWithLevel:(int)aslLevel prefix:(NSString *)prefix suffix:(NSString *)suffix message:(NSString *)text arguments:(va_list)argList;
-
-/**
- \return The ASLClient instance in use on the current thread.  Every new thread is ensured to use an independent ASLClient instance.
- */
-- (SOASLClient *) currentThreadASLClient;
+- (SOASLClient *) ASLClient;
 
 #pragma mark -
 #pragma mark Properties
@@ -182,19 +185,20 @@ extern uint32_t SOLoggerDefaultASLOptions;
 /**
  The ASL options that will be configured into the logger's ASLClient instance.  By default, #SOLoggerDefaultASLOptions will be used on new ASL connections.
  */
-@property (nonatomic, assign) uint32_t ASLClientOptions;
+@property (nonatomic, assign) uint32_t clientOptions;
 
 /**
  Array of the additional file descriptors (as NSNumber) to be added to the ASL client connection.
  When a logger's ASLClient instance is created, it is configured to also send messages to this list of file descriptors.
  */
-@property (nonatomic, readonly) NSMutableArray *additionalFileDescriptors; 
+@property (nonatomic, readonly) NSArray *additionalFileDescriptors; 
 
 /**
-Reference to the ASLClient used by the logger on the main thread.
-The logger will use separate ASLClient instances on each thread under which it executes.  For each new thread, its ASLClient will be a copy of the main thread's ASLClient.
+\return The ASLClient associated with the main thread.
 */
-@property (nonatomic, readonly) SOASLClient *mainASLClient;
+@property (nonatomic, readonly) SOASLClient *mainThreadASLClient;
+
+@property (nonatomic, readonly) NSString *ASLClientKey;
 
 @end
 

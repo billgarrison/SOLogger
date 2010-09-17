@@ -27,10 +27,10 @@
 #define StringFromBool(x) ((x ? @"YES" : @"NO"))
 
 // Macro for assertions assuring there's always something useful logged to the console.
-#define ASSERT( condition ) NSAssert( condition, [NSString stringWithUTF8String:"assert (" #condition ") failed"])
+#define ASSERT( condition ) NSAssert (condition, [NSString stringWithUTF8String:"assert (" #condition ") failed"])
 
 // Macro for checking IB variable connections.
-#define AssertIBConnection( ivar ) NSAssert( ivar != nil, [NSString stringWithUTF8String:"IBOutlet " #ivar " not connected in IB"]);
+#define AssertIBConnection( ivar ) NSAssert (ivar != nil, [NSString stringWithUTF8String:"IBOutlet " #ivar " not connected in IB"]);
 
 // Macro for testing nil or empty strings.
 #define IsEmptyString( string ) ((string == nil) || [string isEqualToString:@""])

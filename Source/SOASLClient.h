@@ -13,11 +13,15 @@
 
 @interface SOASLClient : NSObject 
 {
-		aslclient myClientConnection;
+    aslclient myClientConnection;
+    NSMutableArray *myAdditionalFileDescriptors;
 }
 
 /** The ASL client connection that we are are covering. */
 @property (nonatomic, readonly) aslclient asl_client;
+
+/** Array of file descriptors (NSNumber) to which log messages are being sent. */
+@property (nonatomic, readonly) NSArray *loggingDescriptors;
 
 /**
  \return An autoreleased instance.  The client connection is not opened.
@@ -30,7 +34,7 @@
  \param options A bitflag of options to pass to the asl_open() function.
  \return YES if the connection was opened; NO otherwise.  clientConnection will be NULL until the connection is successfully opened.
  */
-- (void) openForFacility:(NSString *)facility options:(uint32_t)options;
+- (void) openForFacility: (NSString *) facility options: (uint32_t) options;
 
 /**
  \brief Close the ASL client connection.
@@ -48,18 +52,18 @@
 
 /**
  \brief Adds the file descriptor to the list of those who will receive mirror copies of all logged messages.
- \param descriptor The file descriptor.  Can refer to a file, pipe, or socket.
+ \param fileDescriptor The file descriptor.  Can refer to a file, pipe, or socket.
  \return YES if the descriptor was successfully added to the ASL client connection; NO otherwise.
  */
-- (BOOL) addLoggingDescriptor:(int)descriptor;
+- (BOOL) addLoggingDescriptor: (int)fileDescriptor;
 
 /**
  \brief Removes the file descriptor from the mirrored logging list.
- \param descriptor The file descriptor.  Can refer to a file, pipe, or socket.
+ \param fileDescriptor The file descriptor.  Can refer to a file, pipe, or socket.
  \return YES if the descriptor was successfully removed to the ASL client connection; NO otherwise.
  Closing an ASL client connection causes all added file descriptors to be removed.  Use this method to remove a mirrored log adhoc before close.
  */
-- (BOOL) removeLoggingDescriptor:(int)descriptor;
+- (BOOL) removeLoggingDescriptor: (int)fileDescriptor;
 
 @end
 
