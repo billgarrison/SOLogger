@@ -7,28 +7,27 @@
 //  $LastChangedBy$
 //  $LastChangedDate$
 
-#import "SOASLClient.h"
+#import "SOASLConnection.h"
 
-@implementation SOASLClient
-@synthesize asl_client = myClientConnection;
+@implementation SOASLConnection
+@synthesize ASLClient = myClient;
 @dynamic loggingDescriptors;
 
 #pragma mark -
 #pragma mark Creation
 
-+ (SOASLClient *) client;
++ (id) ASLConnection;
 {
-    return [[[SOASLClient alloc] init] autorelease];
+    return [[[self alloc] init] autorelease];
 }
 
 - (id) init;
 {
     self = [super init];
     if ( self ) {
-        myClientConnection = NULL;
+        myClient = NULL;
         myAdditionalFileDescriptors = [NSMutableArray new];
     }
-    
     return self;
 }
 
@@ -37,12 +36,11 @@
     // Ensure that the client connection is closed.
     [self close];
     
-    [myAdditionalFileDescriptors release];
-    myAdditionalFileDescriptors = nil;
-    
+    [myAdditionalFileDescriptors release]; myAdditionalFileDescriptors = nil;
+
 #if SOASLCLIENT_DEBUG
     NSThread *currentThread = [NSThread currentThread];
-    NSLog(@"Deallocating %@ on %@ thread %@", self, ([currentThread isEqual:[NSThread mainThread]] ? @"main" : @"background"), currentThread);	
+    NSLog(@"Deallocating %@ on %@ thread %@", self, ([currentThread isMainThread] ? @"main" : @"background"), currentThread);	
 #endif
     
     [super dealloc];
@@ -52,33 +50,31 @@
 
 - (void) openForFacility: (NSString *) facility options: (uint32_t) options;
 {
-    if ( myClientConnection ) return; // Already open.
+    if (myClient) return; // Already open.
     
     // If no facility is specified, use "com.apple.console"
     const char *normalizedFacility = facility ? [facility UTF8String] : "com.apple.console";
     
-    myClientConnection = asl_open( NULL /*ident*/, normalizedFacility, options );
+    myClient = asl_open (NULL /*ident*/, normalizedFacility, options);
 }
 
 - (BOOL) isOpen;
 {
-    return (myClientConnection != NULL);
+    return (myClient != NULL);
 }
 
 - (void) close;
 {		
-    if ( [self isOpen] ) {
+    if ([self isOpen]) {
         //				
         //				for ( NSNumber *descriptor in self.mirrorFileDescriptors ) {
         //						NSLog(@"removing mirrored file descriptor %@", descriptor );
         //						asl_remove_log_file( myClientConnection, [descriptor integerValue] );
         //				}
-        
-        [myAdditionalFileDescriptors removeAllObjects];
-        
-        asl_close( myClientConnection );
-        myClientConnection = NULL;
+        asl_close (myClient);
     }
+    myClient = NULL;
+    [myAdditionalFileDescriptors removeAllObjects];
 }
 
 #pragma mark -
@@ -86,9 +82,9 @@
 
 - (BOOL) addLoggingDescriptor: (int)fileDescriptor
 {
-    ASSERT ([self isOpen]);
-    BOOL success = asl_add_log_file (myClientConnection, fileDescriptor) == 0;
-    if ( success ) {
+    NSAssert ([self isOpen], @"ASL Client must be open to add file descriptors");
+    BOOL success = asl_add_log_file (myClient, fileDescriptor) == 0;
+    if (success) {
         [myAdditionalFileDescriptors addObject: [NSNumber numberWithInt:fileDescriptor]];
     }
     return success;
@@ -96,9 +92,9 @@
 
 - (BOOL) removeLoggingDescriptor:  (int)fileDescriptor
 {
-    ASSERT ([self isOpen]);
-    BOOL success = asl_remove_log_file (myClientConnection, fileDescriptor) == 0;
-    if ( success ) {
+    NSAssert ([self isOpen], @"ASL Client must be open to add file descriptors");
+    BOOL success = asl_remove_log_file (myClient, fileDescriptor) == 0;
+    if (success) {
         [myAdditionalFileDescriptors removeObject:[NSNumber numberWithInt:fileDescriptor]];
     }
     return success;

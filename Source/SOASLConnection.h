@@ -1,5 +1,5 @@
 //
-//  SOASLClient.h
+//  SOASLConnection.h
 //
 //  Copyright 2009 Standard Orbit Software, LLC. All rights reserved.
 //
@@ -8,17 +8,22 @@
 //  $LastChangedDate$
 //
 
+/**
+SOASLConnection represents a connection to the ASL service.
+
+It carries an aslclient
+*/
 #import <Foundation/Foundation.h>
 #import <asl.h>
 
-@interface SOASLClient : NSObject 
+@interface SOASLConnection : NSObject 
 {
-    aslclient myClientConnection;
+    aslclient myClient;
     NSMutableArray *myAdditionalFileDescriptors;
 }
 
-/** The ASL client connection that we are are covering. */
-@property (nonatomic, readonly) aslclient asl_client;
+/** The aslclient connection that we are are covering. */
+@property (nonatomic, readonly) aslclient ASLClient;
 
 /** Array of file descriptors (NSNumber) to which log messages are being sent. */
 @property (nonatomic, readonly) NSArray *loggingDescriptors;
@@ -26,7 +31,7 @@
 /**
  \return An autoreleased instance.  The client connection is not opened.
  */
-+ (SOASLClient *) client;
++ (SOASLConnection *) ASLConnection;
 
 /**
  \brief Open the ASL client connection.
@@ -53,14 +58,14 @@
 /**
  \brief Adds the file descriptor to the list of those who will receive mirror copies of all logged messages.
  \param fileDescriptor The file descriptor.  Can refer to a file, pipe, or socket.
- \return YES if the descriptor was successfully added to the ASL client connection; NO otherwise.
+ \return YES if the descriptor was successfully added to the connection; NO otherwise.
  */
 - (BOOL) addLoggingDescriptor: (int)fileDescriptor;
 
 /**
  \brief Removes the file descriptor from the mirrored logging list.
  \param fileDescriptor The file descriptor.  Can refer to a file, pipe, or socket.
- \return YES if the descriptor was successfully removed to the ASL client connection; NO otherwise.
+ \return YES if the descriptor was successfully removed to the connection; NO otherwise.
  Closing an ASL client connection causes all added file descriptors to be removed.  Use this method to remove a mirrored log adhoc before close.
  */
 - (BOOL) removeLoggingDescriptor: (int)fileDescriptor;

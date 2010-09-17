@@ -25,9 +25,10 @@
 		B1837FE9100E836600BA6C78 /* SOLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1837EBD100E709B00BA6C78 /* SOLogger.framework */; };
 		B18380E1100E855900BA6C78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		F20C9D36112A637800C44CDE /* MultipleLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */; };
+		F2578B6E12431CDD001FFCBB /* BackgroundThreadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2578B6D12431CDD001FFCBB /* BackgroundThreadTests.m */; };
 		F29A0AA11129DB900066D400 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AA01129DB900066D400 /* main.m */; };
-		F29A0AAE1129DB9B0066D400 /* SOASLClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AA91129DB9B0066D400 /* SOASLClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29A0AAF1129DB9B0066D400 /* SOASLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAA1129DB9B0066D400 /* SOASLClient.m */; };
+		F29A0AAE1129DB9B0066D400 /* SOASLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AA91129DB9B0066D400 /* SOASLConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F29A0AAF1129DB9B0066D400 /* SOASLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAA1129DB9B0066D400 /* SOASLConnection.m */; };
 		F29A0AB01129DB9B0066D400 /* SOLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AAB1129DB9B0066D400 /* SOLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29A0AB11129DB9B0066D400 /* SOLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAC1129DB9B0066D400 /* SOLogger.m */; };
 		F29A0B0B1129DEC60066D400 /* FileDescriptorLoggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */; };
@@ -56,11 +57,12 @@
 		B1837EBD100E709B00BA6C78 /* SOLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1837EBE100E709B00BA6C78 /* SOLogger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SOLogger-Info.plist"; sourceTree = "<group>"; };
 		F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipleLoggerTests.m; path = UnitTests/MultipleLoggerTests.m; sourceTree = "<group>"; };
+		F2578B6D12431CDD001FFCBB /* BackgroundThreadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundThreadTests.m; path = UnitTests/BackgroundThreadTests.m; sourceTree = "<group>"; };
 		F29A0A851129DB100066D400 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29A0A9F1129DB900066D400 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
 		F29A0AA01129DB900066D400 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F29A0AA91129DB9B0066D400 /* SOASLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOASLClient.h; sourceTree = "<group>"; };
-		F29A0AAA1129DB9B0066D400 /* SOASLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOASLClient.m; sourceTree = "<group>"; };
+		F29A0AA91129DB9B0066D400 /* SOASLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOASLConnection.h; sourceTree = "<group>"; };
+		F29A0AAA1129DB9B0066D400 /* SOASLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOASLConnection.m; sourceTree = "<group>"; };
 		F29A0AAB1129DB9B0066D400 /* SOLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger.h; sourceTree = "<group>"; };
 		F29A0AAC1129DB9B0066D400 /* SOLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOLogger.m; sourceTree = "<group>"; };
 		F29A0AAD1129DB9B0066D400 /* SOLogger_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger_Prefix.pch; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */,
 				F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */,
+				F2578B6D12431CDD001FFCBB /* BackgroundThreadTests.m */,
 				F29A0AB71129DBB30066D400 /* UnitTests-Info.plist */,
 				F29A0ACA1129DC4A0066D400 /* UnitTests_Prefix.pch */,
 				F29A0ADA1129DCA60066D400 /* UnitTestDebugSetup.applescript */,
@@ -164,8 +167,8 @@
 		F29A0AA81129DB9B0066D400 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				F29A0AA91129DB9B0066D400 /* SOASLClient.h */,
-				F29A0AAA1129DB9B0066D400 /* SOASLClient.m */,
+				F29A0AA91129DB9B0066D400 /* SOASLConnection.h */,
+				F29A0AAA1129DB9B0066D400 /* SOASLConnection.m */,
 				F29A0AAB1129DB9B0066D400 /* SOLogger.h */,
 				F29A0AAC1129DB9B0066D400 /* SOLogger.m */,
 				F29A0AAD1129DB9B0066D400 /* SOLogger_Prefix.pch */,
@@ -199,7 +202,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F29A0AAE1129DB9B0066D400 /* SOASLClient.h in Headers */,
+				F29A0AAE1129DB9B0066D400 /* SOASLConnection.h in Headers */,
 				F29A0AB01129DB9B0066D400 /* SOLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,7 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F29A0AAF1129DB9B0066D400 /* SOASLClient.m in Sources */,
+				F29A0AAF1129DB9B0066D400 /* SOASLConnection.m in Sources */,
 				F29A0AB11129DB9B0066D400 /* SOLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +348,7 @@
 			files = (
 				F29A0B0B1129DEC60066D400 /* FileDescriptorLoggingTests.m in Sources */,
 				F20C9D36112A637800C44CDE /* MultipleLoggerTests.m in Sources */,
+				F2578B6E12431CDD001FFCBB /* BackgroundThreadTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

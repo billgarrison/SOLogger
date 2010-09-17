@@ -17,18 +17,13 @@
  
  SOLogger and Threads
  
- Each SOLogger instance uses an SOASLClient instance to interact with the ASL service, one SOASLClient per active thread.  At the time of creation, a SOASLClient is configured with the logger's facility, client options, and list of additional file descriptors. 
+ An SOLogger uses an SOASLConnection to interact with the ASL server, one SOASLConnection per active thread.  A thread's SOASLConnection instance is stored in the NSThread#threadInfo dictionary, under the key SOLogger#ASLConnectionKey.  At the time of creation, an SOASLConnection is configured with the logger's facility, client options, and list of additional file descriptors. 
  
- All ASLClient instances live as long as their associated thread.  Consequently, the main thread's ASLClient instance exists for the life of the application.  ASLClients on secondary threads may be arbitrarily long-lived or short-lived.
- 
- For any thread accessing an SOLogger instance, the ASLClient instance used for logging is found in the #NSThread::threadInfo dictionary under the key #ASLClientKey.  Each thread's ASLClient instance is configured using the SOLogger's current property values. A thread's ASLClient instance is lazily created by the receiver's #ASLClient method, stored in the current thread's threadInfo dictionary, and reused as initially configured for the life of the thread.
- 
+ All SOASLConnection instances live only as long as their associated thread runs.  Consequently, the main thread's SOASLConnection instance exists for the life of the application.  SOASLConnections on secondary threads will have varying lifetimes.
+  
  Known Issues
  
- After modifying the logger's file descriptor list, the current thread and all future threads will get an ASLClient instance configured with this now-updated file descriptors list.  ASLClient instances in other concurrently existing threads are *not* updated.  It is possible for two long-running threads to have ASLClients with different file descriptor lists.
- 
- I don't anticipate that this behavior will cause a problem in practice.  I'm noting it here, though, so that you're aware of it.
- 
+ After modifying the logger's file descriptor list, the current thread and all future threads will get an ASL connection instance configured with this now-updated file descriptors list.  Existing SOASLConnection instances in other concurrently running threads are *not* updated.  Given this behavior, it is possible for the SOASLConnections in two long-running threads belonging to same SOLogger instance to become out of sync with each other.  I do not anticipate that this behavior will cause a problem in practice.  I'm noting it here, though, so that you're aware of it.
  */
 
 #import <Foundation/Foundation.h>
@@ -40,20 +35,20 @@
  */
 extern uint32_t SOLoggerDefaultASLOptions;
 
-@class SOASLClient;
+@class SOASLConnection;
 
 @interface SOLogger : NSObject 
 {
 @private
     NSString *myFacility;
-    uint32_t myClientOptions;
+    uint32_t myASLOptions;
     NSMutableArray *myAdditionalFileDescriptors;
-    SOASLClient *myMainThreadASLClient;
+    SOASLConnection *myMainThreadASLConnection;
     
-    // To enable multiple SOLoggers to operate in a given thread, the per-thread ASLClient for each must be stored uniquely in the thread's threadInfo dictionary.
-    // We generate a dictionary key of the form <ASLClientKey>-<memory address of the SOLogger receiver>.
-    // E.g. For an SOLogger instance at 0x3238493, the per-logger ASLClient key for accessing the threadInfo dictionary will be @"ASLClientForLogger0x3238493"
-    NSString *myPerLoggerASLClientKey;
+    // To enable multiple SOLoggers to operate in a given thread, the per-thread ASLConnection for each must be stored uniquely in the thread's threadInfo dictionary.
+    // We generate a dictionary key of the form SOASLConnectionForLogger<memory address of the SOLogger>.
+    // E.g. For an SOLogger instance at 0x3238493, the per-logger ASL connection key for accessing the threadInfo dictionary will be @"SOASLConnectionForLogger0x3238493"
+    NSString *myPerLoggerASLConnectionKey;
 }
 
 #pragma mark -
@@ -172,7 +167,7 @@ extern uint32_t SOLoggerDefaultASLOptions;
 /**
  \return The ASLClient instance in use on the current thread.  Every thread will have its own independent ASLClient instance.
  */
-- (SOASLClient *) ASLClient;
+- (SOASLConnection *) ASLConnection;
 
 #pragma mark -
 #pragma mark Properties
@@ -183,9 +178,9 @@ extern uint32_t SOLoggerDefaultASLOptions;
 @property (nonatomic, readonly) NSString *facility;
 
 /**
- The ASL options that will be configured into the logger's ASLClient instance.  By default, #SOLoggerDefaultASLOptions will be used on new ASL connections.
+ The ASL options that will be configured into the logger's ASLConnection instance.  By default, #SOLoggerDefaultASLOptions will be used on new ASL connections.
  */
-@property (nonatomic, assign) uint32_t clientOptions;
+@property (nonatomic, assign) uint32_t connectionOptions;
 
 /**
  Array of the additional file descriptors (as NSNumber) to be added to the ASL client connection.
@@ -196,9 +191,9 @@ extern uint32_t SOLoggerDefaultASLOptions;
 /**
 \return The ASLClient associated with the main thread.
 */
-@property (nonatomic, readonly) SOASLClient *mainThreadASLClient;
+@property (nonatomic, readonly) SOASLConnection *mainThreadASLConnection;
 
-@property (nonatomic, readonly) NSString *ASLClientKey;
+@property (nonatomic, readonly) NSString *ASLConnectionKey;
 
 @end
 
