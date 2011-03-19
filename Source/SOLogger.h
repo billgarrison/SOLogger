@@ -20,7 +20,7 @@
  An SOLogger uses an ASLConnection to interact with the ASL service, one ASLConnection per active thread.  A thread's ASLConnection instance is stored in the NSThread#threadDictionary dictionary, under the key SOLogger#ASLConnectionKey.  At the time of creation, an ASLConnection is configured with the logger's facility, client options, and list of additional logging descriptors. 
  
  All ASLConnection instances live only as long as their associated threads. Consequently, the main thread's ASLConnection instance exists for the life of the application.  ASLConnections on secondary threads will have varying lifetimes.
-  
+ 
  Known Issues
  
  After modifying a logger's file descriptor list, the main thread's ASLConnection is always updated. If the logger's descriptor list is modified from a secondary thread, that thread's ASLConnection is also updated.  All subsequent logger  threads will inherit the logger's updated descriptors list. Any other concurrently running logger threads are unaffected and unaware of the change in the descriptor list.
@@ -46,13 +46,9 @@ extern uint32_t SOLoggerDefaultASLOptions;
 @private
     NSString *__facility;
     uint32_t __ASLOptions;
-	int __ASLFilterMask;
+    int __ASLFilterMask;
     NSMutableArray *__extraLoggingDescriptors;
     ASLConnection *__mainThreadASLConnection;
-    
-    // To enable multiple SOLoggers to operate in a given thread, the per-thread ASLConnection for each must be stored uniquely in the thread's threadInfo dictionary.
-    // We generate a dictionary key of the form ASLConnectionForLogger<memory address of the SOLogger>.
-    // E.g. For an SOLogger instance at 0x3238493, the per-logger ASL connection key for accessing the threadInfo dictionary will be @"ASLConnectionForLogger0x3238493"
     NSString *__perLoggerASLConnectionKey;
 }
 
@@ -201,10 +197,26 @@ extern uint32_t SOLoggerDefaultASLOptions;
 @property (nonatomic, readonly) NSArray *additionalFileDescriptors; 
 
 /**
-\return The ASLClient associated with the main thread.
-*/
+ \return The ASLClient associated with the main thread.
+ */
 @property (nonatomic, readonly) ASLConnection *mainThreadASLConnection;
 
+
+/**
+ A dictionary key that is unique per logger instance for storing the logger's ASLConnection instance in a thread's threadDictionary.
+ 
+ To enable multiple SOLoggers to be tracked in a given thread, each per-thread ASLConnection must be stored uniquely in the thread's threadInfo dictionary.
+ 
+ We generate a dictionary key of the form ASLConnectionForLogger<memory address of the SOLogger>.
+ E.g. For an SOLogger instance at 0x3238493, the per-logger ASL connection key for accessing the threadInfo dictionary will be @"ASLConnectionForLogger0x3238493"
+ 
+ This unique key allows a single thread's threadDictionary to track 2 or more SOLoggers.
+ For example:
+ SOLogger *logger1 = ...; // Address at 0x3238493
+ SOLogger *logger2 = ...; // Address at 0x3238600
+ 
+ On the main thread, the ASLConnection for each logger will be stored in the thread's threadDictionary under ASLConnectionForLogger0x3238493 and ASLConnectionForLogger0x3238600. These keys will be used to uniquely store each logger's ASLConnection in any thread's info dictionary.
+ */
 @property (nonatomic, readonly) NSString *ASLConnectionKey;
 
 @end

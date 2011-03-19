@@ -2,9 +2,9 @@
 {
 	08FB7793FE84155DC02AAC07 /* Project object */ = {
 		activeBuildConfigurationName = Debug;
-		activeExecutable = F29A0DCA1129EE980066D400 /* Demo */;
+		activeExecutable = F29A0E151129F5C60066D400 /* otest */;
 		activeSDKPreference = macosx10.6;
-		activeTarget = 8DD76F960486AA7600D96B5E /* Demo */;
+		activeTarget = F29A0A841129DB100066D400 /* UnitTests */;
 		addToTargets = (
 			F29A0A841129DB100066D400 /* UnitTests */,
 		);
@@ -16,6 +16,7 @@
 			F29A0E151129F5C60066D400 /* otest */,
 			F261706D1333CAB80077C0E8 /* otest */,
 			F26170A01333DB2A0077C0E8 /* otest */,
+			F2FB36FE13344E91002F06D2 /* otest */,
 		);
 		perUserDictionary = {
 			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
@@ -75,7 +76,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					1437,
+					853,
 					20,
 					48,
 					43,
@@ -126,8 +127,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 322183943;
-			PBXWorkspaceStateSaveDate = 322183943;
+			PBXPerProjectTemplateStateSaveDate = 322187869;
+			PBXWorkspaceStateSaveDate = 322187869;
 		};
 		perUserProjectItems = {
 			F20C9D47112A674A00C44CDE /* PBXTextBookmark */ = F20C9D47112A674A00C44CDE /* PBXTextBookmark */;
@@ -142,9 +143,9 @@
 			F2617137133411800077C0E8 /* PBXTextBookmark */ = F2617137133411800077C0E8 /* PBXTextBookmark */;
 			F261713A133411800077C0E8 /* PBXTextBookmark */ = F261713A133411800077C0E8 /* PBXTextBookmark */;
 			F261713B133411800077C0E8 /* PBXTextBookmark */ = F261713B133411800077C0E8 /* PBXTextBookmark */;
-			F261715B1334219F0077C0E8 /* PBXTextBookmark */ = F261715B1334219F0077C0E8 /* PBXTextBookmark */;
-			F26FA3D013342CC200D1C780 /* PBXTextBookmark */ = F26FA3D013342CC200D1C780 /* PBXTextBookmark */;
-			F26FA3D113342CC200D1C780 /* PBXTextBookmark */ = F26FA3D113342CC200D1C780 /* PBXTextBookmark */;
+			F2FB37011334515A002F06D2 /* PBXTextBookmark */ = F2FB37011334515A002F06D2 /* PBXTextBookmark */;
+			F2FB37021334515A002F06D2 /* PBXTextBookmark */ = F2FB37021334515A002F06D2 /* PBXTextBookmark */;
+			F2FB37031334515A002F06D2 /* PBXTextBookmark */ = F2FB37031334515A002F06D2 /* PBXTextBookmark */;
 		};
 		sourceControlManager = F2B6A5861125EE1F00C2ECA4 /* Source Control */;
 		userBuildSettings = {
@@ -359,10 +360,10 @@
 		path = /Developer/SDKs/MacOSX10.6.sdk/usr/include/asl.h;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1476, 7332}}";
-			sepNavSelRange = "{2483, 0}";
-			sepNavVisRange = "{1265, 2126}";
-			sepNavWindowFrame = "{{19, 204}, {1535, 1209}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1145, 6670}}";
+			sepNavSelRange = "{1973, 0}";
+			sepNavVisRange = "{1559, 994}";
+			sepNavWindowFrame = "{{19, 68}, {1204, 705}}";
 		};
 	};
 	F261713A133411800077C0E8 /* PBXTextBookmark */ = {
@@ -370,7 +371,7 @@
 		fRef = F29A0AA01129DB900066D400 /* main.m */;
 		name = "main.m: 18";
 		rLen = 0;
-		rLoc = 383;
+		rLoc = 389;
 		rType = 0;
 		vrLen = 1404;
 		vrLoc = 253;
@@ -385,36 +386,6 @@
 		vrLen = 2458;
 		vrLoc = 205;
 	};
-	F261715B1334219F0077C0E8 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = F29A0AAC1129DB9B0066D400 /* SOLogger.m */;
-		name = "SOLogger.m: 135";
-		rLen = 15;
-		rLoc = 3470;
-		rType = 0;
-		vrLen = 1377;
-		vrLoc = 4105;
-	};
-	F26FA3D013342CC200D1C780 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = F29A0AAB1129DB9B0066D400 /* SOLogger.h */;
-		name = "SOLogger.h: 57";
-		rLen = 0;
-		rLoc = 3493;
-		rType = 0;
-		vrLen = 3292;
-		vrLoc = 2516;
-	};
-	F26FA3D113342CC200D1C780 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = F29A0AAC1129DB9B0066D400 /* SOLogger.m */;
-		name = "SOLogger.m: 37";
-		rLen = 39;
-		rLoc = 981;
-		rType = 0;
-		vrLen = 1626;
-		vrLoc = 245;
-	};
 	F29A0A841129DB100066D400 /* UnitTests */ = {
 		activeExec = 0;
 	};
@@ -428,10 +399,10 @@
 	};
 	F29A0AA01129DB900066D400 /* main.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1476, 2691}}";
-			sepNavSelRange = "{3585, 0}";
-			sepNavVisRange = "{2492, 1358}";
-			sepNavWindowFrame = "{{569, 0}, {1535, 1209}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1217, 2710}}";
+			sepNavSelRange = "{3156, 0}";
+			sepNavVisRange = "{3090, 1124}";
+			sepNavWindowFrame = "{{4, 0}, {1276, 778}}";
 		};
 	};
 	F29A0AA91129DB9B0066D400 /* ASLConnection.h */ = {
@@ -452,18 +423,18 @@
 	};
 	F29A0AAB1129DB9B0066D400 /* SOLogger.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1313, 3960}}";
-			sepNavSelRange = "{1210, 0}";
-			sepNavVisRange = "{196, 2809}";
+			sepNavIntBoundsRect = "{{0, 0}, {1031, 3820}}";
+			sepNavSelRange = "{3051, 0}";
+			sepNavVisRange = "{2463, 1261}";
 			sepNavWindowFrame = "{{19, 89}, {1372, 908}}";
 		};
 	};
 	F29A0AAC1129DB9B0066D400 /* SOLogger.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1615, 5748}}";
-			sepNavSelRange = "{981, 39}";
-			sepNavVisRange = "{245, 1626}";
-			sepNavWindowFrame = "{{288, 316}, {1372, 908}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1217, 5112}}";
+			sepNavSelRange = "{302, 14}";
+			sepNavVisRange = "{0, 1235}";
+			sepNavWindowFrame = "{{4, 0}, {1276, 778}}";
 		};
 	};
 	F29A0AAD1129DB9B0066D400 /* SOLogger_Prefix.pch */ = {
@@ -653,5 +624,69 @@
 	F2B6A5871125EE1F00C2ECA4 /* Code sense */ = {
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
+	};
+	F2FB36FD13344E91002F06D2 /* otest */ = {
+		isa = PBXFileReference;
+		name = otest;
+		path = /Developer/Tools/otest;
+		sourceTree = "<absolute>";
+	};
+	F2FB36FE13344E91002F06D2 /* otest */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		launchableReference = F2FB36FD13344E91002F06D2 /* otest */;
+		libgmallocEnabled = 0;
+		name = otest;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	F2FB37011334515A002F06D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F29A0AAC1129DB9B0066D400 /* SOLogger.m */;
+		name = "SOLogger.m: 37";
+		rLen = 39;
+		rLoc = 981;
+		rType = 0;
+		vrLen = 1071;
+		vrLoc = 556;
+	};
+	F2FB37021334515A002F06D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F29A0AAB1129DB9B0066D400 /* SOLogger.h */;
+		name = "SOLogger.h: 57";
+		rLen = 0;
+		rLoc = 3051;
+		rType = 0;
+		vrLen = 1430;
+		vrLoc = 2516;
+	};
+	F2FB37031334515A002F06D2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = F29A0AAB1129DB9B0066D400 /* SOLogger.h */;
+		name = "SOLogger.h: 53";
+		rLen = 0;
+		rLoc = 3051;
+		rType = 0;
+		vrLen = 1261;
+		vrLoc = 2463;
 	};
 }
