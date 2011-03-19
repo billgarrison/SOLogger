@@ -8,182 +8,118 @@
 //  $LastChangedDate$
 
 #import "SOLogger.h"
-#import "SOASLConnection.h"
+#import "ASLConnection.h"
 
 uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT_NO_REMOTE;
 
 @implementation SOLogger
 
+@synthesize facility = __facility;
+@synthesize connectionOptions = __ASLOptions;
+@synthesize ASLConnectionKey = __perLoggerASLConnectionKey;
+@synthesize severityFilterMask = __ASLFilterMask;
+
 #pragma mark -
 #pragma mark Creation
 
-+ (SOLogger *) loggerForFacility: (NSString *) facility options: (uint32_t) options;
++ (SOLogger *) loggerForFacility:(NSString *)facility options:(uint32_t)options
 {
-    SOLogger *logger = [[[SOLogger alloc] initWithFacility:facility options:options] autorelease];
-    return logger;
+	SOLogger *logger = [[[SOLogger alloc] initWithFacility:facility options:options] autorelease];
+	return logger;
 }
 
-- (id) initWithFacility: (NSString *) facility options: (uint32_t) options;
+- (id) initWithFacility:(NSString *)facility options:(uint32_t)options;
 {
-    self = [super init];
-    if ( self ) {
-        myFacility = [facility copy];
-        myASLOptions = options;
-        myAdditionalFileDescriptors = [NSMutableArray new];
-        myPerLoggerASLConnectionKey = [[NSString alloc] initWithFormat:@"%@ForLogger%p", NSStringFromClass([SOASLConnection class]), self];
-    }
-    return self;
+	self = [super init];
+	if ( self ) {
+		__facility = [facility copy];
+		__ASLOptions = options;
+		__ASLFilterMask = ASL_FILTER_MASK_UPTO (ASL_LEVEL_NOTICE);
+		__extraLoggingDescriptors = [[NSMutableArray alloc] init];
+		__perLoggerASLConnectionKey = [[NSString alloc] initWithFormat:@"%@ForLogger%p", NSStringFromClass([ASLConnection class]), self];
+	}
+	return self;
 }
 
-- (id) init;
+- (id) init
 {
-    return [self initWithFacility:nil options:SOLoggerDefaultASLOptions];
+	return [self initWithFacility:nil options:SOLoggerDefaultASLOptions];
 }
 
-- (void) dealloc;
+- (void) dealloc
 {		
-    [[[NSThread currentThread] threadDictionary] removeObjectForKey: myPerLoggerASLConnectionKey];
-    [myPerLoggerASLConnectionKey release]; myPerLoggerASLConnectionKey = nil;
-    [myFacility release]; myFacility = nil;
-    [myAdditionalFileDescriptors release]; myAdditionalFileDescriptors = nil;
-    [super dealloc];
-}
-
-// Return the ASL connection that we should be using for the current thread. 
-- (SOASLConnection *) ASLConnection;
-{
-    // We use the NSThread threadDictionary to cache an instance of our ASLClient cover object.  When the thread is released, the ASLClient deallocs, taking care of closing out the client connection.
-    
-    NSMutableDictionary *threadInfo = [[NSThread currentThread] threadDictionary];
-    assert (threadInfo != nil);
-    
-    SOASLConnection *connection = [threadInfo objectForKey: myPerLoggerASLConnectionKey];
-    
-    if (connection == nil) {
-        
-        // Create a new ASL connection instance and cache it in the current thread's dictionary.
-        connection = [[[SOASLConnection alloc] init] autorelease];
-        
-        // Stash the ASL connection in this thread's info dictionary; each thread in play needs to have an independent asl_client connection.
-        [threadInfo setObject:connection forKey: myPerLoggerASLConnectionKey];
-        
-        // Open the connection before adding file descriptors; a valid asl_client connection be exist first.
-        [connection openForFacility:self.facility options:self.connectionOptions];
-        
-        // Pass on the set of additional file descriptors to which the logger should be sending messages
-        for (NSNumber *descriptor in self.additionalFileDescriptors) {
-            [connection addLoggingDescriptor:[descriptor intValue]];
-        }
-        
-#if DEBUG
-        asl_set_filter ([connection ASLClient], ASL_FILTER_MASK_UPTO(ASL_LEVEL_DEBUG));
-#endif
-    }
-    
-    // Capture a weak reference to the main thread's ASL connection.  This enables the main thread connection instance to be available via -mainThreadASLConnection; primarily helps with unit testing, but might be otherwise useful.
-    if ((myMainThreadASLConnection == nil) && [NSThread isMainThread]) {
-        myMainThreadASLConnection = connection;
-    }
-    
-    return [[connection retain] autorelease];
+	[[[NSThread currentThread] threadDictionary] removeObjectForKey: __perLoggerASLConnectionKey];
+	[__perLoggerASLConnectionKey release], __perLoggerASLConnectionKey = nil;
+	[__facility release], __facility = nil;
+	[__extraLoggingDescriptors release], __extraLoggingDescriptors = nil;
+	[super dealloc];
 }
 
 #pragma mark -
 #pragma mark Logging
 
-- (void) debug: (NSString *) format, ...;
-{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    va_list arglist;    
-    va_start (arglist, format);
-    [self logWithLevel:ASL_LEVEL_DEBUG format:format arguments:arglist];
-    va_end (arglist);
-    
-    [pool drain];
+- (void) debug: (NSString *) format, ...
+{	
+	va_list arglist;    
+	va_start (arglist, format);
+	[self logWithLevel:ASL_LEVEL_DEBUG format:format arguments:arglist];
+	va_end (arglist);
 }
 
 - (void) info: (NSString *) format, ...;
-{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    va_list arglist;
-    va_start (arglist, format);
-    [self logWithLevel:ASL_LEVEL_INFO format:format arguments:arglist];
-    va_end (arglist);
-
-    [pool drain];
+{	
+	va_list arglist;
+	va_start (arglist, format);
+	[self logWithLevel:ASL_LEVEL_INFO format:format arguments:arglist];
+	va_end (arglist);
 }
 
 - (void) notice: (NSString *) format, ...;
 {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    va_list arglist;
-    va_start (arglist, format);
-    [self logWithLevel:ASL_LEVEL_NOTICE format:format arguments:arglist];
-    va_end (arglist);
-
-    [pool drain];
+	va_list arglist;
+	va_start (arglist, format);
+	[self logWithLevel:ASL_LEVEL_NOTICE format:format arguments:arglist];
+	va_end (arglist);
 }
 
 - (void) warning: (NSString *) format, ...;
 {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    va_list arglist;
-    va_start (arglist, format);
-    [self logWithLevel:ASL_LEVEL_WARNING format:format arguments:arglist];
-    va_end (arglist);
-
-    [pool drain];
+	va_list arglist;
+	va_start (arglist, format);
+	[self logWithLevel:ASL_LEVEL_WARNING format:format arguments:arglist];
+	va_end (arglist);
 }
 
 - (void) error: (NSString *) format, ...;
-{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    va_list arglist;
-    va_start (arglist, format);
-    [self logWithLevel:ASL_LEVEL_ERR format:format arguments:arglist];
-    va_end (arglist);
-
-    [pool drain];
+{	
+	va_list arglist;
+	va_start (arglist, format);
+	[self logWithLevel:ASL_LEVEL_ERR format:format arguments:arglist];
+	va_end (arglist);
 }
 
 - (void) alert: (NSString *) format, ...;
-{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    va_list arglist;
-    va_start (arglist, format);
-    [self logWithLevel:ASL_LEVEL_ALERT format:format arguments:arglist];
-    va_end (arglist);
-
-    [pool drain];
+{	
+	va_list arglist;
+	va_start (arglist, format);
+	[self logWithLevel:ASL_LEVEL_ALERT format:format arguments:arglist];
+	va_end (arglist);
 }
 
 - (void) critical: (NSString *) format, ...;
-{
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    va_list arglist;
-    va_start (arglist, format);
-    [self logWithLevel:ASL_LEVEL_CRIT format:format arguments:arglist];
-    va_end (arglist);
-
-    [pool drain];
+{	
+	va_list arglist;
+	va_start (arglist, format);
+	[self logWithLevel:ASL_LEVEL_CRIT format:format arguments:arglist];
+	va_end (arglist);
 }
 
 - (void) panic: (NSString *) format, ...;
 {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-    va_list arglist;
-    va_start (arglist, format);
-    [self logWithLevel:ASL_LEVEL_EMERG format:format arguments:arglist];
-    va_end (arglist);
-
-    [pool drain];
+	va_list arglist;
+	va_start (arglist, format);
+	[self logWithLevel:ASL_LEVEL_EMERG format:format arguments:arglist];
+	va_end (arglist);
 }
 
 #pragma mark -
@@ -191,78 +127,161 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
 
 - (void) logWithLevel:(int)aslLevel format:(NSString *)format arguments:(va_list)arguments
 {
-    SOASLConnection *connection = [self ASLConnection];
-    
-    assert ([connection isOpen]);
-    assert (aslLevel >= ASL_LEVEL_EMERG || aslLevel <= ASL_LEVEL_DEBUG);
-    assert (format != nil);
-    
-    aslmsg msg = asl_new(ASL_TYPE_MSG);    
-    const char *normalizedFacility = self.facility ? [self.facility UTF8String] : "com.apple.console";
-    asl_set (msg, ASL_KEY_FACILITY, normalizedFacility);
-    
-    // The format value will likely include the %@ directive, which asl_log() does not handle. So process the format and arguments into an NSString first.
-    NSString *text = [[NSString alloc] initWithFormat:format arguments:arguments];
-    
-    // Log the text as UTF-8 string.
-    asl_log ([connection ASLClient], msg, aslLevel, "%s", [text UTF8String]);
-    
-    // Cleanup
-    asl_free (msg);
-    [text release];
-    
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	ASLConnection *connection = [self ASLConnection];
+	
+	assert ([connection isOpen]);
+	assert (aslLevel >= ASL_LEVEL_EMERG || aslLevel <= ASL_LEVEL_DEBUG);
+	assert (format != nil);
+	
+	aslmsg msg = asl_new (ASL_TYPE_MSG);    
+	const char *normalizedFacility = self.facility ? [self.facility UTF8String] : "com.apple.console";
+	asl_set (msg, ASL_KEY_FACILITY, normalizedFacility);
+	
+	/* asl_log() does not handle the %@ format specifier, so process the format and arguments into an NSString first. */
+	
+	NSString *text = [[[NSString alloc] initWithFormat:format arguments:arguments] autorelease];
+	
+	/* Log the text as UTF-8 string */
+	asl_log ([connection aslclientRef], msg, aslLevel, "%s", [text UTF8String]);
+	
+	// Cleanup
+	asl_free (msg);
+	
 #if SOASLLOGGER_DEBUG
-    NSThread *currentThread = [NSThread currentThread];
-    NSLog (@"%@ on %@ thread %@", client, ([currentThread isEqual:[NSThread mainThread]] ? @"main" : @"background"), currentThread);
+	NSThread *currentThread = [NSThread currentThread];
+	NSLog (@"%@ on %@ thread %@", client, ([currentThread isEqual:[NSThread mainThread]] ? @"main" : @"background"), currentThread);
 #endif
+	
+	[pool drain];
 }
 
 #pragma mark -
-#pragma mark Additional Logging Files
+#pragma mark Additional Logging Descriptors
 
-- (void) addFileDescriptor:(int)fileDescriptor;
+- (void) addFileDescriptor:(int)descriptor
 {
-    @synchronized (myAdditionalFileDescriptors) {
-        [myAdditionalFileDescriptors addObject:[NSNumber numberWithInt:fileDescriptor]];
-        
-        // Add the new descriptor to the current thread's ASL connection
-        [[self ASLConnection] addLoggingDescriptor:fileDescriptor];
-    }
+	@synchronized (__extraLoggingDescriptors)
+	{
+		[__extraLoggingDescriptors addObject:[NSNumber numberWithInt:descriptor]];
+		
+		/* Add the new descriptor to the current thread's ASL connection. */
+		
+		[[self ASLConnection] addLoggingDescriptor:descriptor];
+		
+		/* Also update the main thread ASL connection, if necessary. */
+		
+		if ( ![NSThread isMainThread]) 
+		{
+			[[self mainThreadASLConnection] addLoggingDescriptor:descriptor];
+		}
+	}
 }
 
 
-- (void) removeFileDescriptor:(int)fd;
+- (void) removeFileDescriptor:(int)descriptor
 {
-    @synchronized (myAdditionalFileDescriptors) {
-        [myAdditionalFileDescriptors removeObject:[NSNumber numberWithInt:fd]];
-        // Remove the descriptor from the current thread's ASL connection
-        [[self ASLConnection] removeLoggingDescriptor:fd];
-    }
+	@synchronized (__extraLoggingDescriptors) 
+	{
+		[__extraLoggingDescriptors removeObject:[NSNumber numberWithInt:descriptor]];
+		
+		/* Remove the descriptor from the current thread's ASL connection */
+		
+		[[self ASLConnection] removeLoggingDescriptor:descriptor];
+		
+		/* Also update the main thread ASL connection, if necessary. */
+		
+		if ( ![NSThread isMainThread]) 
+		{
+			[[self mainThreadASLConnection] removeLoggingDescriptor:descriptor];
+		}
+	}
 }
 
 #pragma mark -
-#pragma mark Properties
+#pragma mark Accessors
 
-@synthesize facility = myFacility;
-@synthesize connectionOptions = myASLOptions;
-@synthesize ASLConnectionKey = myPerLoggerASLConnectionKey;
+- (void) setSeverityFilterMask:(int)newMask
+{
+	/* Update the severity filtering on the current ASL connection, which could belong to a background thread. */
+		
+	asl_set_filter ([[self ASLConnection] aslclientRef], newMask);
+	
+	/* Update the main thread's ASL connection also */
+	
+	if ( ![NSThread isMainThread] )
+	{
+		asl_set_filter ([[self mainThreadASLConnection] aslclientRef], newMask);
+	}
+}
+
+/* Return the ASL connection that we should be using for the current thread. */
+
+- (ASLConnection *) ASLConnection
+{
+	// We use the NSThread threadDictionary to cache an instance of our ASLClient cover object.  When the thread is released, the ASLClient deallocs, taking care of closing out the client connection.
+	
+	NSMutableDictionary *threadInfo = [[NSThread currentThread] threadDictionary];
+	assert (threadInfo != nil);
+	
+	ASLConnection *connection = [threadInfo objectForKey: __perLoggerASLConnectionKey];
+	
+	if (connection == nil)
+	{
+		/* 
+		 Create a new ASL connection instance and cache it in the current thread's dictionary.
+		 Each thread in play needs to have an independent asl_client connection.
+		 The per-logger-key enables a single thread to have multiple loggers in play.
+		 */
+		connection = [[[ASLConnection alloc] init] autorelease];
+		[threadInfo setObject:connection forKey: __perLoggerASLConnectionKey];
+		
+		/* Configure the severity filtering level */
+		asl_set_filter ([connection aslclientRef], __ASLFilterMask);
+		
+		/* Open the connection before adding file descriptors; a valid asl_client handle must exist first */
+		[connection openForFacility:self.facility options:self.connectionOptions];
+		
+		/* Pass on the set of additional file descriptors to which the logger should be sending messages */
+		for (NSNumber *descriptor in self.additionalFileDescriptors)
+		{
+			[connection addLoggingDescriptor:[descriptor intValue]];
+		}
+		
+#if DEBUG
+		/* When DEBUG is set, reset filtering so that all messages are logged, including DEBUG level one. */
+		asl_set_filter ([connection aslclientRef], ASL_FILTER_MASK_UPTO(ASL_LEVEL_DEBUG));
+#endif
+	}
+	
+	/* Capture a weak reference to the main thread's ASL connection so that we can make it generally available via -mainThreadASLConnection. -mainThreadASLConnection is primarily used for unit testing, but might be otherwise useful to callers.
+	 */
+	if ([NSThread isMainThread] && !__mainThreadASLConnection)
+	{
+		__mainThreadASLConnection = connection;
+	}
+	
+	return [[connection retain] autorelease];
+}
 
 - (NSArray *) additionalFileDescriptors 
 {
-    NSArray *immutableCopy = nil;
-    @synchronized (myAdditionalFileDescriptors) {
-        immutableCopy = [NSArray arrayWithArray: myAdditionalFileDescriptors];
-    }
-    return immutableCopy;
+	NSArray *immutable = nil;
+	@synchronized (__extraLoggingDescriptors) {
+		immutable = [NSArray arrayWithArray: __extraLoggingDescriptors];
+	}
+	return immutable;
 }
 
-- (SOASLConnection *) mainThreadASLConnection
+- (ASLConnection *) mainThreadASLConnection
 {
-    if (myMainThreadASLConnection == nil) {
-        [self performSelectorOnMainThread:@selector(ASLClient) withObject:nil waitUntilDone:YES];
-    }
-
-    return [[myMainThreadASLConnection retain] autorelease];
+	if (__mainThreadASLConnection == nil) 
+	{
+		[self performSelectorOnMainThread:@selector(ASLConnection) withObject:nil waitUntilDone:YES];
+	}
+	
+	return [[__mainThreadASLConnection retain] autorelease];
 }
 @end
 

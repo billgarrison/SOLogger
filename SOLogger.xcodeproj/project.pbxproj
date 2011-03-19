@@ -27,8 +27,8 @@
 		F20C9D36112A637800C44CDE /* MultipleLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */; };
 		F2578B6E12431CDD001FFCBB /* BackgroundThreadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2578B6D12431CDD001FFCBB /* BackgroundThreadTests.m */; };
 		F29A0AA11129DB900066D400 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AA01129DB900066D400 /* main.m */; };
-		F29A0AAE1129DB9B0066D400 /* SOASLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AA91129DB9B0066D400 /* SOASLConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29A0AAF1129DB9B0066D400 /* SOASLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAA1129DB9B0066D400 /* SOASLConnection.m */; };
+		F29A0AAE1129DB9B0066D400 /* ASLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AA91129DB9B0066D400 /* ASLConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F29A0AAF1129DB9B0066D400 /* ASLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAA1129DB9B0066D400 /* ASLConnection.m */; };
 		F29A0AB01129DB9B0066D400 /* SOLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AAB1129DB9B0066D400 /* SOLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F29A0AB11129DB9B0066D400 /* SOLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAC1129DB9B0066D400 /* SOLogger.m */; };
 		F29A0B0B1129DEC60066D400 /* FileDescriptorLoggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */; };
@@ -61,8 +61,8 @@
 		F29A0A851129DB100066D400 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29A0A9F1129DB900066D400 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
 		F29A0AA01129DB900066D400 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F29A0AA91129DB9B0066D400 /* SOASLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOASLConnection.h; sourceTree = "<group>"; };
-		F29A0AAA1129DB9B0066D400 /* SOASLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOASLConnection.m; sourceTree = "<group>"; };
+		F29A0AA91129DB9B0066D400 /* ASLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLConnection.h; sourceTree = "<group>"; };
+		F29A0AAA1129DB9B0066D400 /* ASLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLConnection.m; sourceTree = "<group>"; };
 		F29A0AAB1129DB9B0066D400 /* SOLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger.h; sourceTree = "<group>"; };
 		F29A0AAC1129DB9B0066D400 /* SOLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOLogger.m; sourceTree = "<group>"; };
 		F29A0AAD1129DB9B0066D400 /* SOLogger_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger_Prefix.pch; sourceTree = "<group>"; };
@@ -167,8 +167,8 @@
 		F29A0AA81129DB9B0066D400 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				F29A0AA91129DB9B0066D400 /* SOASLConnection.h */,
-				F29A0AAA1129DB9B0066D400 /* SOASLConnection.m */,
+				F29A0AA91129DB9B0066D400 /* ASLConnection.h */,
+				F29A0AAA1129DB9B0066D400 /* ASLConnection.m */,
 				F29A0AAB1129DB9B0066D400 /* SOLogger.h */,
 				F29A0AAC1129DB9B0066D400 /* SOLogger.m */,
 				F29A0AAD1129DB9B0066D400 /* SOLogger_Prefix.pch */,
@@ -202,7 +202,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F29A0AAE1129DB9B0066D400 /* SOASLConnection.h in Headers */,
+				F29A0AAE1129DB9B0066D400 /* ASLConnection.h in Headers */,
 				F29A0AB01129DB9B0066D400 /* SOLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F29A0AAF1129DB9B0066D400 /* SOASLConnection.m in Sources */,
+				F29A0AAF1129DB9B0066D400 /* ASLConnection.m in Sources */,
 				F29A0AB11129DB9B0066D400 /* SOLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,8 @@
 // $Author$
 // $Date$
 
+#import "ASLConnection.h"
+
 #pragma mark -
 
 @interface MultipleLoggerTests : SenTestCase
@@ -29,13 +31,15 @@
     logger1 = [[SOLogger alloc] initWithFacility:@"Test Logger 1" options:SOLoggerDefaultASLOptions];
     logger2 = [[SOLogger alloc] initWithFacility:@"Test Logger 2" options:SOLoggerDefaultASLOptions];
 
-    SOASLConnection *connection1 = [logger1 ASLConnection];
-    SOASLConnection *connection2 = [logger2 ASLConnection];
+    ASLConnection *connection1 = [logger1 ASLConnection];
+    ASLConnection *connection2 = [logger2 ASLConnection];
     
     // logger1 and logger2 should have distinct ASL connections on any given thread.
-    STAssertNotNil (connection1, @"postconditiion violated");
+    STAssertNotNil (connection1, @"postcondition violated");
     STAssertNotNil (connection2, @"postcondition violated");
-    STAssertTrue (connection1 != connection2, @"postcondition violated");
+    STAssertTrue (connection1 != connection2, @"postcondition violated"); 
+	
+	STAssertTrue ([connection1 aslclientRef] != [connection2 aslclientRef], @"postcondition violated");
 }
 
 #pragma mark -

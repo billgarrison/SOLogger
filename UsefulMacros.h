@@ -21,7 +21,7 @@
 #endif // DEBUG
 
 // Release and nil the given ivar
-#define ReleaseAndNil(ivar) [ivar release]; ivar = nil;
+#define ReleaseAndNil(ivar) [ivar release], ivar = nil;
 
 // Macro for logging boolean values.
 #define StringFromBool(x) ((x ? @"YES" : @"NO"))

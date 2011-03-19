@@ -3,8 +3,8 @@
 #import <Foundation/Foundation.h>
 #import "SOLogger/SOLogger.h"
 
-#define LogEnteringMethod(logger) [logger debug:@"Entering method %s", __PRETTY_FUNCTION__]
-#define LogExitingMethod(logger) [logger debug:@"Exiting method %s", __PRETTY_FUNCTION__]
+#define LogEntering(logger) [logger debug:@"Entering method %s", __PRETTY_FUNCTION__]
+#define LogExiting(logger) [logger debug:@"Exiting method %s", __PRETTY_FUNCTION__]
 
 @interface ASLLoggerDemo : NSObject
 {
@@ -19,33 +19,31 @@
 - (id) init;
 {
 	self = [super init];
-	if ( self ) {
-		logger = [[SOLogger loggerForFacility:@"com.example.ASLLoggerDemo" options:SOLoggerDefaultASLOptions] retain];
-		
-		NSMutableArray *pathComponents = [[NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) mutableCopy] autorelease];
-		[pathComponents addObject:@"ASLDemoLog.txt"];
-		NSString *logFilePath = [NSString pathWithComponents:pathComponents]; 
-		
-		// Create the file if it doesn't exist.
-		if ( NO == [[NSFileManager defaultManager] fileExistsAtPath:logFilePath] ) {
-			[[NSFileManager defaultManager] createFileAtPath:logFilePath contents:nil attributes:nil];
-		}
-		
-		externalLogFile = [[NSFileHandle fileHandleForWritingAtPath:logFilePath] retain];
-		assert( externalLogFile != nil );
-		
-		[logger addFileDescriptor:[externalLogFile fileDescriptor]];
-	}
+	if (!self) return nil;
+	
+	logger = [[SOLogger loggerForFacility:@"com.example.ASLLoggerDemo" options:SOLoggerDefaultASLOptions] retain];
+	
+	NSMutableArray *pathComponents = [[NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) mutableCopy] autorelease];
+	[pathComponents addObject:@"ASLDemoLog.txt"];
+	NSString *logFilePath = [NSString pathWithComponents:pathComponents]; 
+	
+	// Create the external logging file.
+	[[NSFileManager defaultManager] createFileAtPath:logFilePath contents:nil attributes:nil];
+	
+	externalLogFile = [[NSFileHandle fileHandleForWritingAtPath:logFilePath] retain];
+	assert( externalLogFile != nil );
+	
+	[logger addFileDescriptor:[externalLogFile fileDescriptor]];
+	
 	return self;
 }
 
 - (void) dealloc;
 {
 	[externalLogFile closeFile];
-	[externalLogFile release];
-	externalLogFile = nil;
+	[externalLogFile release], externalLogFile = nil;
 	
-	[logger release]; logger = nil;
+	[logger release], logger = nil;
 	[super dealloc];
 }
 
@@ -61,7 +59,7 @@
 
 - (void) testMyLog;
 {
-	LogEnteringMethod(logger);
+	LogEntering(logger);
 	
 	[logger debug:@"Debug: A debugging note on: %@", [NSDate date]];
 	[logger info:@"Info: We just did something."];
@@ -72,12 +70,12 @@
 	[logger critical:@"Critical!"];
 	[logger panic:@"Panic!"];
 	
-	LogExitingMethod(logger);
+	LogExiting(logger);
 }
 
 - (void) testLogToSeparateFiles;
 {
-	LogEnteringMethod(logger);
+	LogEntering(logger);
 	
 	size_t templateLen = 80;
 	char *template = malloc(templateLen);
@@ -98,17 +96,37 @@
 	
 	[logger removeFileDescriptor:logFileDescriptor];
 	
-	LogExitingMethod(logger);
+	LogExiting(logger);
+}
+
+- (void) demoSeverityFiltering
+{
+	LogEntering(logger);
+
+	/* Prevent messages lower than CRITICAL form being logged. */
+	[logger setSeverityFilterMask: ASL_FILTER_MASK_UPTO (ASL_LEVEL_CRIT)];
+	
+	[logger debug:@"Debug"];
+	[logger info:@"Info"];
+	[logger notice:@"Notice"];
+	[logger warning:@"Warning"];
+	[logger alert:@"Alert!"];
+	[logger critical:@"Critical!"];
+	[logger panic:@"Panic!"];
+	
+	[logger setSeverityFilterMask: ASL_FILTER_MASK_UPTO (ASL_LEVEL_NOTICE)];
+
+	LogExiting(logger);
 }
 
 @end
 
 
 int main (int argc, const char * argv[]) {
-    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	
-    // insert code here...
-    NSLog(@"Hello, World!");
+	// insert code here...
+	NSLog(@"Hello, World!");
 	
 	ASLLoggerDemo *demo = [ASLLoggerDemo new];
 	
@@ -116,6 +134,7 @@ int main (int argc, const char * argv[]) {
 	[demo testInfoMessage];
 	[demo testLogInBackgroundThread];
 	[demo testMyLog];
+	[demo demoSeverityFiltering];
 	
 	// Drive the runloop for a bit so that we can get log messages that the ASLClients in background threads have cleaned up.
 	[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.25]];

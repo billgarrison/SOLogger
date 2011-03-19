@@ -9,41 +9,43 @@
 //
 
 /**
-SOASLConnection represents a connection to the ASL service.
-
-It carries an aslclient
-*/
+ ASLConnection represents a connection to the ASL service.
+ 
+ It carries a reference to an aslclient client handle.
+ 
+ The primary purpose for this wrapper class is to enable proper use of ASL from multiple threads. Documentation (man 3 asl) states that there should be a separate aslclient client handle created for each thread that talks to the ASL service. SOLogger will automatically create an ASLConnection instance when needed for any thread to satisfy the one-aslclient-per-thread condition, storing it in that thread's -threadDictionary dictionary.
+ */
 #import <Foundation/Foundation.h>
 #import <asl.h>
 
-@interface SOASLConnection : NSObject 
+@interface ASLConnection : NSObject 
 {
-    aslclient myClient;
-    NSMutableArray *myAdditionalFileDescriptors;
+	aslclient __aslclientRef;
+	NSMutableArray *__extraLoggingDescriptors;
 }
 
-/** The aslclient connection that we are are covering. */
-@property (nonatomic, readonly) aslclient ASLClient;
+/** The aslclient connection that we are wrapping. Will be NULL until the connection is opened. */
+@property (nonatomic, readonly) aslclient aslclientRef;
 
-/** Array of file descriptors (NSNumber) to which log messages are being sent. */
+/** Additional POSIX descriptors (of NSNumber) to which log messages will be sent. */
 @property (nonatomic, readonly) NSArray *loggingDescriptors;
 
 /**
- \return An autoreleased instance.  The client connection is not opened.
+ \return An autoreleased instance. The connection is not opened.
  */
-+ (SOASLConnection *) ASLConnection;
++ (ASLConnection *) ASLConnection;
 
 /**
  \brief Open the ASL client connection.
- \param facility A reverse dot notation name for the facility for which this connection will be logging.
+ \param facility The facility name under which this connection will be logging. Reverse dot notation is recommended to ensure uniqueness.
  \param options A bitflag of options to pass to the asl_open() function.
- \return YES if the connection was opened; NO otherwise.  clientConnection will be NULL until the connection is successfully opened.
+ \return YES if the connection was opened; NO otherwise.
  */
 - (void) openForFacility: (NSString *) facility options: (uint32_t) options;
 
 /**
  \brief Close the ASL client connection.
- If you don't do this explicitly, it will be done when the instance is deallocated.
+ The ASL connection will be closed implicitly when the instance is deallocated.
  */
 - (void) close;
 
@@ -56,19 +58,23 @@ It carries an aslclient
 #pragma mark Logging Streams
 
 /**
- \brief Adds the file descriptor to the list of those who will receive mirror copies of all logged messages.
- \param fileDescriptor The file descriptor.  Can refer to a file, pipe, or socket.
+ \brief Adds the given descriptor to the list of those who will receive copies of all logged messages.
+ \param descriptor The POSIX descriptor of the file, pipe, or socket to be added.
  \return YES if the descriptor was successfully added to the connection; NO otherwise.
+ The descriptor is expected to have already been opened. ASL does not open or close the descriptor. The caller is expected to manage the opening and closing of any extra logging descriptors.
  */
-- (BOOL) addLoggingDescriptor: (int)fileDescriptor;
+- (BOOL) addLoggingDescriptor: (int)descriptor;
 
 /**
- \brief Removes the file descriptor from the mirrored logging list.
- \param fileDescriptor The file descriptor.  Can refer to a file, pipe, or socket.
+ \brief Removes the descriptor from the mirrored logging list.
+ \param descriptor The previously added descriptor.
  \return YES if the descriptor was successfully removed to the connection; NO otherwise.
- Closing an ASL client connection causes all added file descriptors to be removed.  Use this method to remove a mirrored log adhoc before close.
+ -close causes all added descriptors to be removed. Use this method to remove a particular descriptor before close.
+ 
+ The descriptor is not closed when removed the list. The caller is expected to manage the opening and closing of any extra logging descriptors.
+
  */
-- (BOOL) removeLoggingDescriptor: (int)fileDescriptor;
+- (BOOL) removeLoggingDescriptor: (int)descriptor;
 
 @end
 
