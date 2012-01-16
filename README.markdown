@@ -224,12 +224,12 @@ For iOS,
   1. Add the files below to your project:
   1. Include "SOLogger.h" in your project's prefix header file.
 
-<pre>
-SOLogger.h
-SOLogger.m
-ASLConnection.h
-ASLConnection.m
-</pre>
+
+	SOLogger.h
+	SOLogger.m
+	ASLConnection.h
+	ASLConnection.m
+
 
 Then initialize an SOLogger instance wherever you want to logging.
 
@@ -238,37 +238,32 @@ Then initialize an SOLogger instance wherever you want to logging.
 For a shared application-wide logger, add SOLogger as an application-wide global variable.
 
 In your prefix header, add this declaration.
-<pre><code>
-extern SOLogger *gLogger;
-</code></pre>
+	
+	extern SOLogger *gLogger;
 
 In your application delegate's implementation file, instantiate the global in your `+initialize` method.
 
-<pre><code>
-@implementation AppDelegate
+	@implementation AppDelegate
 
-+ (void) initialize
-{
-	gLogger = [[SOLogger alloc] init];
-}
+	+ (void) initialize
+	{
+		gLogger = [[SOLogger alloc] init];
+	}
 
-...
+	...
 
-@end
-</code></pre>
+	@end
 
 Whenever you want to log a message, invoke an SOLogger method on the gLogger variable.
 
-<pre></code>
-- (void) someMethod
-{
-	[gLogger debug:@"Entering %s", __FUNCTION__];
+	- (void) someMethod
+	{
+		[gLogger debug:@"Entering %s", __FUNCTION__];
 	
-	...
+		...
 	
-	[gLogger info:@"I'm doing some stuff: %@", someStuff];
-}
-</code></pre>
+		[gLogger info:@"I'm doing some stuff: %@", someStuff];
+	}
 
 ## Compatibility
 
