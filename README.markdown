@@ -16,68 +16,63 @@ Peter Hosey has written an excellent series of blog articles on ASL. [You should
 
 SOLogger provides methods for logging formatted message at various severity levels.
 
-<pre>
-	<code>
-- (void) debug:(NSString *)format, ...;
-- (void) info:(NSString *)format, ...;
-- (void) notice:(NSString *)format, ...;
-- (void) warning:(NSString *)format, ...;
-- (void) error:(NSString *)format, ...;
-- (void) critical:(NSString *)format, ...;
-- (void) alert:(NSString *)format, ...;
-- (void) panic:(NSString *)format, ...;
-</code>
-</pre>
+
+    - (void) debug:(NSString *)format, ...;
+	- (void) info:(NSString *)format, ...;
+	- (void) notice:(NSString *)format, ...;
+	- (void) warning:(NSString *)format, ...;
+	- (void) error:(NSString *)format, ...;
+	- (void) critical:(NSString *)format, ...;
+	- (void) alert:(NSString *)format, ...;
+	- (void) panic:(NSString *)format, ...;	
+
 
 ### Multiple Loggers
 
 If you'd like to do separate logging from subsystems of your application, you can use multiple SOLoggers configured with their own unique facility.
 
-<pre>
-<code>
-extern SOLogger *gLogger;
-	
-@interface MyNetworkOperation()
-@property (nonatomic, readonly) SOLogger *operationLog;
-@end
 
-@implementation MyNetworkOperation
-- (id) init
-{
-	self = [super init];
-	operationLog = [[SOLogger alloc] initWithFacility:@"com.mycompany.MyNetworkOperation" options:SOLoggerDefaultASLOptions];
-	return self;
-}
-
-- (void) dealloc
-{
-	[operationLog info:@"Deallocating operation: <%@ %p>", NSStringFromClass([self class]), self];
-	[operationLog release]; operationLog = nil;
-	[super dealloc];
-}
-
-- (void) cancel
-{
-	[operationLog info:@"Canceling operation %@", self];
-	[super cancel];
-}
-
-- (void) main
-{
-	[operationLog info:@"Starting operation %@", self];
+	extern SOLogger *gLogger;
 	
-	...
-	
-	[gLogger info:@"This message goes to the global logger."];
-	
-	....
-	
-	[operationLog info:@"Finishing operation %@", self];
-}
+	@interface MyNetworkOperation()
+	@property (nonatomic, readonly) SOLogger *operationLog;
+	@end
 
-@end
-</code>
-</pre>
+	@implementation MyNetworkOperation
+	- (id) init
+	{
+		self = [super init];
+		operationLog = [[SOLogger alloc] initWithFacility:@"com.mycompany.MyNetworkOperation" options:SOLoggerDefaultASLOptions];
+		return self;
+	}
+
+	- (void) dealloc
+	{
+		[operationLog info:@"Deallocating operation: <%@ %p>", NSStringFromClass([self class]), self];
+		[operationLog release]; operationLog = nil;
+		[super dealloc];
+	}
+
+	- (void) cancel
+	{
+		[operationLog info:@"Canceling operation %@", self];
+		[super cancel];
+	}
+
+	- (void) main
+	{
+		[operationLog info:@"Starting operation %@", self];
+	
+		...
+	
+		[gLogger info:@"This message goes to the global logger."];
+	
+		....
+	
+		[operationLog info:@"Finishing operation %@", self];
+	}
+
+	@end
 
 ### Mirrored Logging To External Files
 
@@ -85,55 +80,51 @@ SOLogger provides `-addFileDescriptor:` to let you take advantage of ASL's mirro
 
 E.g. To log to a file on the user's desktop as well as the ASL system database:
 
-<pre>
-<code>
-SOLogger *logger = ...;
-int logfileDescriptor = -1;
 
-/* Create a path to the desktop log file. */
+	SOLogger *logger = ...;
+	int logfileDescriptor = -1;
 
-NSMutableArray *pathComponents = [[NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) mutableCopy] autorelease];
-[pathComponents addObject:@"MyGreatAppDesktopLogFile.txt"];
-NSString *logFilePath = [NSString pathWithComponents:pathComponents]; 
+	/* Create a path to the desktop log file. */
 
-/* Open the external log file for appending, creating if necessary, resetting to zero if existing. */
+	NSMutableArray *pathComponents = [[NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) mutableCopy] autorelease];
+	[pathComponents addObject:@"MyGreatAppDesktopLogFile.txt"];
+	NSString *logFilePath = [NSString pathWithComponents:pathComponents]; 
 
-logfileDescriptor = open ([logFilePath fileSystemRepresentation], O_CREAT|O_APPEND|O_TRUNC, 644);
+	/* Open the external log file for appending, creating if necessary, resetting to zero if existing. */
 
-if (logfileDescriptor != -1) 
-{
-	[logger addFileDescriptor:logfileDescriptor];
-}
+	logfileDescriptor = open ([logFilePath fileSystemRepresentation], O_CREAT|O_APPEND|O_TRUNC, 644);
 
-/* Any subsequently logged messages go to both the log file and ASL */
+	if (logfileDescriptor != -1) 
+	{
+		[logger addFileDescriptor:logfileDescriptor];
+	}
 
-[logger panic:@"It's the end of the world as we know it, and I feel fine."];
+	/* Any subsequently logged messages go to both the log file and ASL */
 
-</code>
-</pre>
+	[logger panic:@"It's the end of the world as we know it, and I feel fine."];
+
+
 
 ### Multithreaded Logging
 
 A single SOLogger instance can be used to log from multiple threads. ASL documentation recommends that a separate ASL connection be used from each thread sending messages to the service. SOLogger implements this practice transparently. Every thread on which a given SOLogger is sending a message gets its own connection to the ASL server. That connection is automatically closed when the thread exits.
 
-<pre>
-<code>
-SOLogger *logger = ...;
 
-dispatch_async (dispatch_get_main_queue() ^{
-	[logger info:@"Hello from the main thread: %@, %@", [NSThread currentThread], [logger ASLConnection]];
-});
+	SOLogger *logger = ...;
 
-/* Log messages from 5 background threads */
+	dispatch_async (dispatch_get_main_queue() ^{
+		[logger info:@"Hello from the main thread: %@, %@", [NSThread currentThread], [logger ASLConnection]];
+	});
 
-for (int i = 0; i < 5; i++) 
-{
-	dispatch_async (dispatch_get_global_queue() ^{
-		[logger info:@"Buenos noches from a lonely background thread: %@, %@", [NSThread currentThread], [logger ASLConnection]];
-	});	
-}
-</code>
-</pre>
+	/* Log messages from 5 background threads */
+
+	for (int i = 0; i < 5; i++) 
+	{
+		dispatch_async (dispatch_get_global_queue() ^{
+			[logger info:@"Buenos noches from a lonely background thread: %@, %@", [NSThread currentThread], [logger ASLConnection]];
+		});	
+	}
+
 
 Each thread uses its own ASLConnection instance to message the ASL server. ASLConnection is a wrapper around the ASL client handle, `aslclient`.
 
@@ -143,15 +134,11 @@ ASL filters messages to the system log by severity. The default filter prevents 
 
 E.g. To enable all messages to be sent to the system log for debug builds:
 
-<pre>
-<code>
-SOLogger *logger = ...;
+	SOLogger *logger = ...;
 
-#if DEBUG
-	[logger setSeverityFilterMask: ASL_FILTER_MASK_UPTO (ASL_LEVEL_DEBUG)];
-#end
-</code>
-</pre>
+	#if DEBUG
+		[logger setSeverityFilterMask: ASL_FILTER_MASK_UPTO (ASL_LEVEL_DEBUG)];
+	#end
 
 ### Access to the ASL client handle
 
@@ -159,42 +146,38 @@ You can access the ASL client handle via the `[ASLConnection aslclientRef]` meth
 
 E.g. to search the system log for all messages sent by "MyApp":
 
-<pre>
-<code>
-SOLogger *logger = ...;
+	SOLogger *logger = ...;
 
-aslclient clientHandle = [[logger ASLConnection] aslclientRef];
-<strong></strong>
-/* Query the ASL database for all messages sent by "MyApp" */
+	aslclient clientHandle = [[logger ASLConnection] aslclientRef];
+	<strong></strong>
+	/* Query the ASL database for all messages sent by "MyApp" */
 
-aslmsg query = asl_new (ASL_TYPE_QUERY);
-asl_set_query (query, ASL_KEY_SENDER, "MyApp", ASL_QUERY_OP_EQUAL);
-aslresponse response = asl_search (clientHandle, query);
+	aslmsg query = asl_new (ASL_TYPE_QUERY);
+	asl_set_query (query, ASL_KEY_SENDER, "MyApp", ASL_QUERY_OP_EQUAL);
+	aslresponse response = asl_search (clientHandle, query);
 
-/* Iterate all messages in found matching the query */
+	/* Iterate all messages in found matching the query */
 
-aslmsg msg = aslresponse_next(response);
-while (msg)
-{
+	aslmsg msg = aslresponse_next(response);
+	while (msg)
+	{
 	
-	/* Iterate message keys, extract value, do something interesting... */
+		/* Iterate message keys, extract value, do something interesting... */
 	
-	for (int keyIndex = 0; ; keyIndex++)
-	{		
-		const char *key = asl_key (message, keyIndex);
-		if (key == NULL) break;
+		for (int keyIndex = 0; ; keyIndex++)
+		{		
+			const char *key = asl_key (message, keyIndex);
+			if (key == NULL) break;
 
-		const char *value = asl_get (msg, key);
+			const char *value = asl_get (msg, key);
 		
-		...
-	}
+			...
+		}
 	
-	msg = aslresponse_next (response);
-}
-aslresponse_free (response);
-asl_free(query);
-</code>
-</pre>
+		msg = aslresponse_next (response);
+	}
+	aslresponse_free (response);
+	asl_free(query);
 
 
 ### Caveats And Other Things to Know
@@ -210,26 +193,23 @@ ASL logs messages to external descriptors in a fixed format used by syslog with 
 It can be convenient to define some macros around the SOLogger severity level methods to modify logging behavior. E.g. to log messages that include file and line location.
 
 In your project's prefix header, you could do something like the following:
-<pre>
-<code>
-	
-extern SOLogger *gLogger;
 
-#define LOG_ERROR(format, ...) [gLogger error:format, ##__VA_ARGS__]
-#define LOG_WARNING(format, ...) [gLogger warning:format, ##__VA_ARGS__]
-#define LOG_INFO(format, ...) [gLogger info:format, ##__VA_ARGS__]
-#define LOG_NOTICE(format, ...) [gLogger notice:format, ##__VA_ARGS__]
-#define LOG_CRITICAL(format, ...) [gLogger critical:format, ##__VA_ARGS__]
-#define LOG_PANIC(format, ...) [gLogger panic:format, ##__VA_ARGS__]
+	extern SOLogger *gLogger;
 
-#define LOG_DEBUG(format, ...) \
-do { \
-	NSMutableString *message = [NSMutableString stringWithFormat:@"%s:%d", __PRETTY_FUNCTION__, __LINE__]; \
-	[message appendFormat:format, ##__VA_ARGS__]; \
-	[gLogger debug:@"%@", message]; \
-} while(0);	
-</code>
-</pre>
+	#define LOG_ERROR(format, ...) [gLogger error:format, ##__VA_ARGS__]
+	#define LOG_WARNING(format, ...) [gLogger warning:format, ##__VA_ARGS__]
+	#define LOG_INFO(format, ...) [gLogger info:format, ##__VA_ARGS__]
+	#define LOG_NOTICE(format, ...) [gLogger notice:format, ##__VA_ARGS__]
+	#define LOG_CRITICAL(format, ...) [gLogger critical:format, ##__VA_ARGS__]
+	#define LOG_PANIC(format, ...) [gLogger panic:format, ##__VA_ARGS__]
+
+	#define LOG_DEBUG(format, ...) \
+	do { \
+		NSMutableString *message = [NSMutableString stringWithFormat:@"%s:%d", __PRETTY_FUNCTION__, __LINE__]; \
+		[message appendFormat:format, ##__VA_ARGS__]; \
+		[gLogger debug:@"%@", message]; \
+	} while(0);	
+
 
 ## Installation
 
