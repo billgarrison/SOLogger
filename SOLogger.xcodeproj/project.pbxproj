@@ -3,79 +3,58 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		F29A0ADF1129DD0E0066D400 /* SetupUnitTestDebugEnvironment */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = F29A0AE71129DD420066D400 /* Build configuration list for PBXAggregateTarget "SetupUnitTestDebugEnvironment" */;
-			buildPhases = (
-				F29A0ADE1129DD0E0066D400 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = SetupUnitTestDebugEnvironment;
-			productName = SetupUnitTestDebugEnvironment;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
-		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
-		B1837FE9100E836600BA6C78 /* SOLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1837EBD100E709B00BA6C78 /* SOLogger.framework */; };
-		B18380E1100E855900BA6C78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
-		F20C9D36112A637800C44CDE /* MultipleLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */; };
-		F2578B6E12431CDD001FFCBB /* BackgroundThreadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2578B6D12431CDD001FFCBB /* BackgroundThreadTests.m */; };
+		F20D47BD14C740A3001D31CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F20D47B714C740A3001D31CA /* AppDelegate.m */; };
+		F20D47BE14C740A3001D31CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F20D47B814C740A3001D31CA /* InfoPlist.strings */; };
+		F20D47C014C740A3001D31CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F20D47BC14C740A3001D31CA /* main.m */; };
+		F20D47C514C74306001D31CA /* SOLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F20D47C414C74306001D31CA /* SOLogger.m */; };
+		F20D47C614C74306001D31CA /* SOLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F20D47C414C74306001D31CA /* SOLogger.m */; };
+		F20D47C714C74306001D31CA /* SOLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F20D47C414C74306001D31CA /* SOLogger.m */; };
+		F24468EC14C638E4005D4C0C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F24468EA14C638E4005D4C0C /* InfoPlist.strings */; };
+		F24468F414C63924005D4C0C /* MultipleLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */; };
+		F24468F514C63924005D4C0C /* FileDescriptorLoggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */; };
+		F24468FF14C6872F005D4C0C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F24468FD14C6872F005D4C0C /* InfoPlist.strings */; };
+		F244691814C690C3005D4C0C /* MultipleLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */; };
+		F244691914C690C3005D4C0C /* FileDescriptorLoggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */; };
 		F29A0AA11129DB900066D400 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AA01129DB900066D400 /* main.m */; };
-		F29A0AAE1129DB9B0066D400 /* ASLConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AA91129DB9B0066D400 /* ASLConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29A0AAF1129DB9B0066D400 /* ASLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAA1129DB9B0066D400 /* ASLConnection.m */; };
-		F29A0AB01129DB9B0066D400 /* SOLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = F29A0AAB1129DB9B0066D400 /* SOLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F29A0AB11129DB9B0066D400 /* SOLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0AAC1129DB9B0066D400 /* SOLogger.m */; };
-		F29A0B0B1129DEC60066D400 /* FileDescriptorLoggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */; };
-		F29A0B701129E25A0066D400 /* SOLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1837EBD100E709B00BA6C78 /* SOLogger.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B1837F63100E834400BA6C78 /* PBXContainerItemProxy */ = {
+		F20D47C114C74156001D31CA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B1837EBC100E709B00BA6C78;
-			remoteInfo = SOASLLogger;
-		};
-		F29A0AF71129DE200066D400 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1837EBC100E709B00BA6C78;
-			remoteInfo = SOLogger;
+			remoteGlobalIDString = F20D47A014C74062001D31CA;
+			remoteInfo = iOSTestRig;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		B1837EBD100E709B00BA6C78 /* SOLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SOLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1837EBE100E709B00BA6C78 /* SOLogger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SOLogger-Info.plist"; sourceTree = "<group>"; };
 		F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipleLoggerTests.m; path = UnitTests/MultipleLoggerTests.m; sourceTree = "<group>"; };
-		F2578B6D12431CDD001FFCBB /* BackgroundThreadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundThreadTests.m; path = UnitTests/BackgroundThreadTests.m; sourceTree = "<group>"; };
-		F29A0A851129DB100066D400 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F20D47A114C74062001D31CA /* iOSTestRig.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSTestRig.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F20D47B614C740A3001D31CA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F20D47B714C740A3001D31CA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F20D47B914C740A3001D31CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F20D47BA14C740A3001D31CA /* iOSTestRig-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iOSTestRig-Info.plist"; sourceTree = "<group>"; };
+		F20D47BB14C740A3001D31CA /* iOSTestRig-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iOSTestRig-Prefix.pch"; sourceTree = "<group>"; };
+		F20D47BC14C740A3001D31CA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F20D47C314C74306001D31CA /* SOLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger.h; sourceTree = "<group>"; };
+		F20D47C414C74306001D31CA /* SOLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOLogger.m; sourceTree = "<group>"; };
+		F20D47CF14C7446B001D31CA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		F24468DD14C638E4005D4C0C /* UnitTestsOSX.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTestsOSX.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F24468E914C638E4005D4C0C /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "UnitTests-Info.plist"; path = "UnitTests/UnitTests-Info.plist"; sourceTree = "<group>"; };
+		F24468F814C639CC005D4C0C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F24468FA14C63ABF005D4C0C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F24468FE14C6872F005D4C0C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = UnitTests/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		F244690514C68F89005D4C0C /* UnitTestsIOS.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTestsIOS.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29A0A9F1129DB900066D400 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
 		F29A0AA01129DB900066D400 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F29A0AA91129DB9B0066D400 /* ASLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASLConnection.h; sourceTree = "<group>"; };
-		F29A0AAA1129DB9B0066D400 /* ASLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASLConnection.m; sourceTree = "<group>"; };
-		F29A0AAB1129DB9B0066D400 /* SOLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger.h; sourceTree = "<group>"; };
-		F29A0AAC1129DB9B0066D400 /* SOLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOLogger.m; sourceTree = "<group>"; };
-		F29A0AAD1129DB9B0066D400 /* SOLogger_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOLogger_Prefix.pch; sourceTree = "<group>"; };
-		F29A0AB71129DBB30066D400 /* UnitTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UnitTests-Info.plist"; path = "UnitTests/UnitTests-Info.plist"; sourceTree = "<group>"; };
 		F29A0ACA1129DC4A0066D400 /* UnitTests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnitTests_Prefix.pch; path = UnitTests/UnitTests_Prefix.pch; sourceTree = "<group>"; };
-		F29A0ADA1129DCA60066D400 /* UnitTestDebugSetup.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; name = UnitTestDebugSetup.applescript; path = UnitTests/UnitTestDebugSetup.applescript; sourceTree = "<group>"; };
-		F29A0AE31129DD420066D400 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		F29A0AE41129DD420066D400 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		F29A0AE51129DD420066D400 /* UnitTests-Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "UnitTests-Debug.xcconfig"; sourceTree = "<group>"; };
-		F29A0AE61129DD420066D400 /* UnitTests-Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "UnitTests-Release.xcconfig"; sourceTree = "<group>"; };
 		F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileDescriptorLoggingTests.m; path = UnitTests/FileDescriptorLoggingTests.m; sourceTree = "<group>"; };
-		F29A0B231129E09A0066D400 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F29A0DC91129EE980066D400 /* sologger_demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = sologger_demo; sourceTree = BUILT_PRODUCTS_DIR; };
+		F29A0DC91129EE980066D400 /* SOLoggerDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SOLoggerDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		F29A0EA01129FEB20066D400 /* UsefulMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsefulMacros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,24 +63,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1837FE9100E836600BA6C78 /* SOLogger.framework in Frameworks */,
-				8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1837EBB100E709B00BA6C78 /* Frameworks */ = {
+		F20D479E14C74062001D31CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B18380E1100E855900BA6C78 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F29A0A821129DB100066D400 /* Frameworks */ = {
+		F24468D914C638E4005D4C0C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F29A0B701129E25A0066D400 /* SOLogger.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F244690114C68F89005D4C0C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,15 +93,13 @@
 		08FB7794FE84155DC02AAC07 /* ASLLogger */ = {
 			isa = PBXGroup;
 			children = (
-				F29A0AA81129DB9B0066D400 /* Source */,
-				F29A0A9E1129DB900066D400 /* Demo */,
+				F20D47C314C74306001D31CA /* SOLogger.h */,
+				F20D47C414C74306001D31CA /* SOLogger.m */,
+				F29A0A9E1129DB900066D400 /* SOLoggerDemo */,
 				F29A0A8D1129DB220066D400 /* UnitTests */,
 				F29A0EA11129FEBE0066D400 /* Other Sources */,
-				F29A0AE21129DD420066D400 /* Build Configurations */,
 				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
-				B1837EBE100E709B00BA6C78 /* SOLogger-Info.plist */,
-				F29A0B231129E09A0066D400 /* Foundation.framework */,
 			);
 			name = ASLLogger;
 			sourceTree = "<group>";
@@ -127,7 +107,9 @@
 		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				08FB779EFE84155DC02AAC07 /* Foundation.framework */,
+				F20D47CF14C7446B001D31CA /* UIKit.framework */,
+				F24468FA14C63ABF005D4C0C /* Foundation.framework */,
+				F24468F814C639CC005D4C0C /* SenTestingKit.framework */,
 			);
 			name = "External Frameworks and Libraries";
 			sourceTree = "<group>";
@@ -135,56 +117,57 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B1837EBD100E709B00BA6C78 /* SOLogger.framework */,
-				F29A0A851129DB100066D400 /* UnitTests.octest */,
-				F29A0DC91129EE980066D400 /* sologger_demo */,
+				F29A0DC91129EE980066D400 /* SOLoggerDemo */,
+				F24468DD14C638E4005D4C0C /* UnitTestsOSX.octest */,
+				F244690514C68F89005D4C0C /* UnitTestsIOS.octest */,
+				F20D47A114C74062001D31CA /* iOSTestRig.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F20D47B514C740A3001D31CA /* iOSTestRig */ = {
+			isa = PBXGroup;
+			children = (
+				F20D47B614C740A3001D31CA /* AppDelegate.h */,
+				F20D47B714C740A3001D31CA /* AppDelegate.m */,
+				F20D47B814C740A3001D31CA /* InfoPlist.strings */,
+				F20D47BA14C740A3001D31CA /* iOSTestRig-Info.plist */,
+				F20D47BB14C740A3001D31CA /* iOSTestRig-Prefix.pch */,
+				F20D47BC14C740A3001D31CA /* main.m */,
+			);
+			name = iOSTestRig;
+			path = UnitTests/iOSTestRig;
+			sourceTree = SOURCE_ROOT;
+		};
+		F24468E814C638E4005D4C0C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F24468E914C638E4005D4C0C /* UnitTests-Info.plist */,
+				F24468FD14C6872F005D4C0C /* InfoPlist.strings */,
+				F20D47B514C740A3001D31CA /* iOSTestRig */,
+			);
+			name = "Supporting Files";
+			path = UnitTestsOSX;
 			sourceTree = "<group>";
 		};
 		F29A0A8D1129DB220066D400 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */,
 				F20C9D35112A637800C44CDE /* MultipleLoggerTests.m */,
-				F2578B6D12431CDD001FFCBB /* BackgroundThreadTests.m */,
-				F29A0AB71129DBB30066D400 /* UnitTests-Info.plist */,
+				F29A0B0A1129DEC60066D400 /* FileDescriptorLoggingTests.m */,
 				F29A0ACA1129DC4A0066D400 /* UnitTests_Prefix.pch */,
-				F29A0ADA1129DCA60066D400 /* UnitTestDebugSetup.applescript */,
+				F24468E814C638E4005D4C0C /* Supporting Files */,
 			);
 			name = UnitTests;
 			sourceTree = "<group>";
 		};
-		F29A0A9E1129DB900066D400 /* Demo */ = {
+		F29A0A9E1129DB900066D400 /* SOLoggerDemo */ = {
 			isa = PBXGroup;
 			children = (
 				F29A0A9F1129DB900066D400 /* Demo_Prefix.pch */,
 				F29A0AA01129DB900066D400 /* main.m */,
 			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
-		F29A0AA81129DB9B0066D400 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				F29A0AA91129DB9B0066D400 /* ASLConnection.h */,
-				F29A0AAA1129DB9B0066D400 /* ASLConnection.m */,
-				F29A0AAB1129DB9B0066D400 /* SOLogger.h */,
-				F29A0AAC1129DB9B0066D400 /* SOLogger.m */,
-				F29A0AAD1129DB9B0066D400 /* SOLogger_Prefix.pch */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		F29A0AE21129DD420066D400 /* Build Configurations */ = {
-			isa = PBXGroup;
-			children = (
-				F29A0AE31129DD420066D400 /* Debug.xcconfig */,
-				F29A0AE41129DD420066D400 /* Release.xcconfig */,
-				F29A0AE51129DD420066D400 /* UnitTests-Debug.xcconfig */,
-				F29A0AE61129DD420066D400 /* UnitTests-Release.xcconfig */,
-			);
-			name = "Build Configurations";
+			path = SOLoggerDemo;
 			sourceTree = "<group>";
 		};
 		F29A0EA11129FEBE0066D400 /* Other Sources */ = {
@@ -197,22 +180,10 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		B1837EB8100E709B00BA6C78 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F29A0AAE1129DB9B0066D400 /* ASLConnection.h in Headers */,
-				F29A0AB01129DB9B0066D400 /* SOLogger.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		8DD76F960486AA7600D96B5E /* Demo */ = {
+		8DD76F960486AA7600D96B5E /* SOLoggerDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildConfigurationList = 1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "SOLoggerDemo" */;
 			buildPhases = (
 				8DD76F990486AA7600D96B5E /* Sources */,
 				8DD76F9B0486AA7600D96B5E /* Frameworks */,
@@ -220,48 +191,65 @@
 			buildRules = (
 			);
 			dependencies = (
-				B1837F64100E834400BA6C78 /* PBXTargetDependency */,
 			);
-			name = Demo;
+			name = SOLoggerDemo;
 			productInstallPath = "$(HOME)/bin";
 			productName = ASLLogger;
-			productReference = F29A0DC91129EE980066D400 /* sologger_demo */;
+			productReference = F29A0DC91129EE980066D400 /* SOLoggerDemo */;
 			productType = "com.apple.product-type.tool";
 		};
-		B1837EBC100E709B00BA6C78 /* SOLogger */ = {
+		F20D47A014C74062001D31CA /* iOSTestRig */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1837EC1100E709C00BA6C78 /* Build configuration list for PBXNativeTarget "SOLogger" */;
+			buildConfigurationList = F20D47B214C74062001D31CA /* Build configuration list for PBXNativeTarget "iOSTestRig" */;
 			buildPhases = (
-				B1837EBA100E709B00BA6C78 /* Sources */,
-				B1837EBB100E709B00BA6C78 /* Frameworks */,
-				B1837EB8100E709B00BA6C78 /* Headers */,
-				B1837EB9100E709B00BA6C78 /* Resources */,
+				F20D479D14C74062001D31CA /* Sources */,
+				F20D479E14C74062001D31CA /* Frameworks */,
+				F20D479F14C74062001D31CA /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SOLogger;
-			productName = SOASLLogger;
-			productReference = B1837EBD100E709B00BA6C78 /* SOLogger.framework */;
-			productType = "com.apple.product-type.framework";
+			name = iOSTestRig;
+			productName = iOSTestRig;
+			productReference = F20D47A114C74062001D31CA /* iOSTestRig.app */;
+			productType = "com.apple.product-type.application";
 		};
-		F29A0A841129DB100066D400 /* UnitTests */ = {
+		F24468DC14C638E4005D4C0C /* UnitTestsOSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F29A0A891129DB110066D400 /* Build configuration list for PBXNativeTarget "UnitTests" */;
+			buildConfigurationList = F24468F114C638E5005D4C0C /* Build configuration list for PBXNativeTarget "UnitTestsOSX" */;
 			buildPhases = (
-				F29A0A811129DB100066D400 /* Sources */,
-				F29A0A821129DB100066D400 /* Frameworks */,
-				F29A0A801129DB100066D400 /* Resources */,
+				F24468D814C638E4005D4C0C /* Sources */,
+				F24468D914C638E4005D4C0C /* Frameworks */,
+				F24468DA14C638E4005D4C0C /* Resources */,
+				F24468DB14C638E4005D4C0C /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F29A0AF81129DE200066D400 /* PBXTargetDependency */,
 			);
-			name = UnitTests;
-			productName = UnitTests;
-			productReference = F29A0A851129DB100066D400 /* UnitTests.octest */;
+			name = UnitTestsOSX;
+			productName = UnitTestsOSX;
+			productReference = F24468DD14C638E4005D4C0C /* UnitTestsOSX.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		F244690414C68F89005D4C0C /* UnitTestsIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F244691514C68F8A005D4C0C /* Build configuration list for PBXNativeTarget "UnitTestsIOS" */;
+			buildPhases = (
+				F244690014C68F89005D4C0C /* Sources */,
+				F244690114C68F89005D4C0C /* Frameworks */,
+				F244690214C68F89005D4C0C /* Resources */,
+				F244690314C68F89005D4C0C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F20D47C214C74156001D31CA /* PBXTargetDependency */,
+			);
+			name = UnitTestsIOS;
+			productName = UnitTestsIOS;
+			productReference = F244690514C68F89005D4C0C /* UnitTestsIOS.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -269,8 +257,11 @@
 /* Begin PBXProject section */
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "SOLogger" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -278,28 +269,39 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 08FB7794FE84155DC02AAC07 /* ASLLogger */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B1837EBC100E709B00BA6C78 /* SOLogger */,
-				8DD76F960486AA7600D96B5E /* Demo */,
-				F29A0A841129DB100066D400 /* UnitTests */,
-				F29A0ADF1129DD0E0066D400 /* SetupUnitTestDebugEnvironment */,
+				8DD76F960486AA7600D96B5E /* SOLoggerDemo */,
+				F24468DC14C638E4005D4C0C /* UnitTestsOSX */,
+				F244690414C68F89005D4C0C /* UnitTestsIOS */,
+				F20D47A014C74062001D31CA /* iOSTestRig */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B1837EB9100E709B00BA6C78 /* Resources */ = {
+		F20D479F14C74062001D31CA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F20D47BE14C740A3001D31CA /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F29A0A801129DB100066D400 /* Resources */ = {
+		F24468DA14C638E4005D4C0C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F24468EC14C638E4005D4C0C /* InfoPlist.strings in Resources */,
+				F24468FF14C6872F005D4C0C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F244690214C68F89005D4C0C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -309,7 +311,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		F29A0ADE1129DD0E0066D400 /* ShellScript */ = {
+		F24468DB14C638E4005D4C0C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -320,7 +322,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/bin/osascript \"${PROJECT_DIR}/UnitTests/UnitTestDebugSetup.applescript\"";
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		F244690314C68F89005D4C0C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -330,42 +345,75 @@
 			buildActionMask = 2147483647;
 			files = (
 				F29A0AA11129DB900066D400 /* main.m in Sources */,
+				F20D47C514C74306001D31CA /* SOLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1837EBA100E709B00BA6C78 /* Sources */ = {
+		F20D479D14C74062001D31CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F29A0AAF1129DB9B0066D400 /* ASLConnection.m in Sources */,
-				F29A0AB11129DB9B0066D400 /* SOLogger.m in Sources */,
+				F20D47BD14C740A3001D31CA /* AppDelegate.m in Sources */,
+				F20D47C014C740A3001D31CA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F29A0A811129DB100066D400 /* Sources */ = {
+		F24468D814C638E4005D4C0C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F29A0B0B1129DEC60066D400 /* FileDescriptorLoggingTests.m in Sources */,
-				F20C9D36112A637800C44CDE /* MultipleLoggerTests.m in Sources */,
-				F2578B6E12431CDD001FFCBB /* BackgroundThreadTests.m in Sources */,
+				F24468F414C63924005D4C0C /* MultipleLoggerTests.m in Sources */,
+				F24468F514C63924005D4C0C /* FileDescriptorLoggingTests.m in Sources */,
+				F20D47C614C74306001D31CA /* SOLogger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F244690014C68F89005D4C0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F244691814C690C3005D4C0C /* MultipleLoggerTests.m in Sources */,
+				F244691914C690C3005D4C0C /* FileDescriptorLoggingTests.m in Sources */,
+				F20D47C714C74306001D31CA /* SOLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B1837F64100E834400BA6C78 /* PBXTargetDependency */ = {
+		F20D47C214C74156001D31CA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B1837EBC100E709B00BA6C78 /* SOLogger */;
-			targetProxy = B1837F63100E834400BA6C78 /* PBXContainerItemProxy */;
-		};
-		F29A0AF81129DE200066D400 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1837EBC100E709B00BA6C78 /* SOLogger */;
-			targetProxy = F29A0AF71129DE200066D400 /* PBXContainerItemProxy */;
+			target = F20D47A014C74062001D31CA /* iOSTestRig */;
+			targetProxy = F20D47C114C74156001D31CA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F20D47B814C740A3001D31CA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F20D47B914C740A3001D31CA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F24468EA14C638E4005D4C0C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+			);
+			name = InfoPlist.strings;
+			path = /Users/stdorbit/Desktop/sologger/UnitTests;
+			sourceTree = "<absolute>";
+		};
+		F24468FD14C6872F005D4C0C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F24468FE14C6872F005D4C0C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB927508733DD40010E9CD /* Debug */ = {
@@ -374,9 +422,15 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Demo/Demo_Prefix.pch;
+				GCC_PREFIX_HEADER = SOLoggerDemo/Demo_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
-				PRODUCT_NAME = sologger_demo;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = SOLoggerDemo;
 			};
 			name = Debug;
 		};
@@ -385,80 +439,253 @@
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Demo/Demo_Prefix.pch;
+				GCC_PREFIX_HEADER = SOLoggerDemo/Demo_Prefix.pch;
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = sologger_demo;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PRODUCT_NAME = SOLoggerDemo;
 			};
 			name = Release;
 		};
 		1DEB927908733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
 		1DEB927A08733DD40010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-			};
-			name = Release;
-		};
-		B1837EBF100E709C00BA6C78 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F29A0AE31129DD420066D400 /* Debug.xcconfig */;
-			buildSettings = {
-			};
-			name = Debug;
-		};
-		B1837EC0100E709C00BA6C78 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F29A0AE41129DD420066D400 /* Release.xcconfig */;
-			buildSettings = {
-			};
-			name = Release;
-		};
-		F29A0A871129DB110066D400 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F29A0AE51129DD420066D400 /* UnitTests-Debug.xcconfig */;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx10.6;
 			};
+			name = Release;
+		};
+		F20D47B314C74062001D31CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnitTests/iOSTestRig/iOSTestRig-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "UnitTests/iOSTestRig/iOSTestRig-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WARNING_CFLAGS = "-Wall";
+				WRAPPER_EXTENSION = app;
+			};
 			name = Debug;
 		};
-		F29A0A881129DB110066D400 /* Release */ = {
+		F20D47B414C74062001D31CA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F29A0AE61129DD420066D400 /* UnitTests-Release.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UnitTests/iOSTestRig/iOSTestRig-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "UnitTests/iOSTestRig/iOSTestRig-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WARNING_CFLAGS = "-Wall";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
-		F29A0AE01129DD0E0066D400 /* Debug */ = {
+		F24468F214C638E5005D4C0C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				PRODUCT_NAME = SetupUnitTestDebugEnvironment;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = UnitTests/UnitTests_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.6;
+				WARNING_CFLAGS = "-Wall";
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
-		F29A0AE11129DD0E0066D400 /* Release */ = {
+		F24468F314C638E5005D4C0C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = SetupUnitTestDebugEnvironment;
-				ZERO_LINK = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = UnitTests/UnitTests_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.6;
+				WARNING_CFLAGS = "-Wall";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		F244691614C68F8A005D4C0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iOSTestRig.app/iOSTestRig";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = UnitTests/UnitTests_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F244691714C68F8A005D4C0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iOSTestRig.app/iOSTestRig";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = UnitTests/UnitTests_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "UnitTests/UnitTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "Demo" */ = {
+		1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "SOLoggerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB927508733DD40010E9CD /* Debug */,
@@ -476,29 +703,28 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1837EC1100E709C00BA6C78 /* Build configuration list for PBXNativeTarget "SOLogger" */ = {
+		F20D47B214C74062001D31CA /* Build configuration list for PBXNativeTarget "iOSTestRig" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B1837EBF100E709C00BA6C78 /* Debug */,
-				B1837EC0100E709C00BA6C78 /* Release */,
+				F20D47B314C74062001D31CA /* Debug */,
+				F20D47B414C74062001D31CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F24468F114C638E5005D4C0C /* Build configuration list for PBXNativeTarget "UnitTestsOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F24468F214C638E5005D4C0C /* Debug */,
+				F24468F314C638E5005D4C0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F29A0A891129DB110066D400 /* Build configuration list for PBXNativeTarget "UnitTests" */ = {
+		F244691514C68F8A005D4C0C /* Build configuration list for PBXNativeTarget "UnitTestsIOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F29A0A871129DB110066D400 /* Debug */,
-				F29A0A881129DB110066D400 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F29A0AE71129DD420066D400 /* Build configuration list for PBXAggregateTarget "SetupUnitTestDebugEnvironment" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F29A0AE01129DD0E0066D400 /* Debug */,
-				F29A0AE11129DD0E0066D400 /* Release */,
+				F244691614C68F8A005D4C0C /* Debug */,
+				F244691714C68F8A005D4C0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
