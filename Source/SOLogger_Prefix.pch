@@ -1,9 +1,0 @@
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-    #import "UsefulMacros.h"
-#endif
-
-#if DEBUG
-#define SOASLLOGGER_DEBUG 0
-#define ASLCONNECTION_DEBUG 0
-#endif

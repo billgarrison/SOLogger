@@ -11,8 +11,8 @@
 
 #if DEBUG
 // For debug builds (DEBUG=1), define a method entry logging convenience
-#define LOG_ENTRY	NSLog(@"Entering %s", __FUNCTION__);
-#define LOG_EXIT	NSLog(@"Exiting %s", __FUNCTION__);
+#define LOG_ENTRY	NSLog(@"Entering %s", __PRETTY_FUNCTION__);
+#define LOG_EXIT	NSLog(@"Exiting %s", __PRETTY_FUNCTION__);
 
 #else
 // For release builds, no extra logging.
