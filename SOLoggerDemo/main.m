@@ -2,7 +2,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AppKit/NSWorkspace.h>
-#import "SOLogger/SOLogger.h"
+#import "SOLogger.h"
 
 @interface SOLoggerDemo : NSObject
 {

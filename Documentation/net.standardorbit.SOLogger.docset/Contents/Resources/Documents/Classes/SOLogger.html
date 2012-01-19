@@ -1,0 +1,1421 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>SOLogger Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 752)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">SOLogger </a></h1>
+				<a id="developerHome" href="../index.html">Standard Orbit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">SOLogger Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/additionalDescriptors">&nbsp;&nbsp;&nbsp;&nbsp;additionalDescriptors</option>
+	
+	<option value="//api/name/facility">&nbsp;&nbsp;&nbsp;&nbsp;facility</option>
+	
+	<option value="//api/name/options">&nbsp;&nbsp;&nbsp;&nbsp;options</option>
+	
+	<option value="//api/name/severityFilterMask">&nbsp;&nbsp;&nbsp;&nbsp;severityFilterMask</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addDescriptor:">&nbsp;&nbsp;&nbsp;&nbsp;- addDescriptor:</option>
+	
+	<option value="//api/name/alert:">&nbsp;&nbsp;&nbsp;&nbsp;- alert:</option>
+	
+	<option value="//api/name/aslclientRef">&nbsp;&nbsp;&nbsp;&nbsp;- aslclientRef</option>
+	
+	<option value="//api/name/critical:">&nbsp;&nbsp;&nbsp;&nbsp;- critical:</option>
+	
+	<option value="//api/name/debug:">&nbsp;&nbsp;&nbsp;&nbsp;- debug:</option>
+	
+	<option value="//api/name/error:">&nbsp;&nbsp;&nbsp;&nbsp;- error:</option>
+	
+	<option value="//api/name/info:">&nbsp;&nbsp;&nbsp;&nbsp;- info:</option>
+	
+	<option value="//api/name/initWithFacility:options:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithFacility:options:</option>
+	
+	<option value="//api/name/logWithLevel:format:arguments:">&nbsp;&nbsp;&nbsp;&nbsp;- logWithLevel:format:arguments:</option>
+	
+	<option value="//api/name/notice:">&nbsp;&nbsp;&nbsp;&nbsp;- notice:</option>
+	
+	<option value="//api/name/panic:">&nbsp;&nbsp;&nbsp;&nbsp;- panic:</option>
+	
+	<option value="//api/name/removeDescriptor:">&nbsp;&nbsp;&nbsp;&nbsp;- removeDescriptor:</option>
+	
+	<option value="//api/name/warning:">&nbsp;&nbsp;&nbsp;&nbsp;- warning:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Initialization">Initialization</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_ASL primitive">ASL primitive</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Logging messages">Logging messages</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Logging to external files">Logging to external files</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Properties">Properties</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/additionalDescriptors">additionalDescriptors</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/facility">facility</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/options">options</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/severityFilterMask">severityFilterMask</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addDescriptor:">addDescriptor:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/alert:">alert:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/aslclientRef">aslclientRef</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/critical:">critical:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/debug:">debug:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error:">error:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/info:">info:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithFacility:options:">initWithFacility:options:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logWithLevel:format:arguments:">logWithLevel:format:arguments:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/notice:">notice:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/panic:">panic:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeDescriptor:">removeDescriptor:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/warning:">warning:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="SOLogger Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">SOLogger Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">SOLogger.h<br />SOLogger.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p><a href="SOLogger.html">SOLogger</a> implements a Cocoa API for logging messages using the Apple System Logging (ASL) service.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>methods for logging formatted messages at the various severity levels.</li>
+<li>logs messages simultaneously to additional file, pipe, and socket descriptors.</li>
+<li>can use a single logger from multiple threads.</li>
+</ul>
+
+
+<h2><a href="SOLogger.html">SOLogger</a> and Threads</h2>
+
+<p>An <a href="SOLogger.html">SOLogger</a> interacts with the ASL service through a separate connection per thread. The connection is opened using <a href="x-man-page://asl" title="asl(3)">asl_open()</a> and configured with the logger&rsquo;s current severity filtering mask and list of additional logging descriptors.</p>
+
+<p>When <a href="#//api/name/severityFilterMask">severityFilterMask</a> or <a href="#//api/name/additionalDescriptors">additionalDescriptors</a> is changed on the logger, all associated ASL connections are also updated.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Initialization" name="task_Initialization"></a>
+						<h3 class="subsubtitle task-title">Initialization</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithFacility:options:">&ndash;&nbsp;initWithFacility:options:</a></code>
+		<span class="tooltip"><p>Designated initializer</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="ASL primitive" name="task_ASL primitive"></a>
+						<h3 class="subsubtitle task-title">ASL primitive</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/aslclientRef">&ndash;&nbsp;aslclientRef</a></code>
+		<span class="tooltip"><p>asl client handle</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Logging messages" name="task_Logging messages"></a>
+						<h3 class="subsubtitle task-title">Logging messages</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/debug:">&ndash;&nbsp;debug:</a></code>
+		<span class="tooltip"><p>Log a debug level message.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/info:">&ndash;&nbsp;info:</a></code>
+		<span class="tooltip"><p>Log an info level message.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/notice:">&ndash;&nbsp;notice:</a></code>
+		<span class="tooltip"><p>Log a notice level message.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/warning:">&ndash;&nbsp;warning:</a></code>
+		<span class="tooltip"><p>Log a warning level message.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/error:">&ndash;&nbsp;error:</a></code>
+		<span class="tooltip"><p>Log an error level message.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/alert:">&ndash;&nbsp;alert:</a></code>
+		<span class="tooltip"><p>Log an alert level message.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/critical:">&ndash;&nbsp;critical:</a></code>
+		<span class="tooltip"><p>Log a critical level message.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/panic:">&ndash;&nbsp;panic:</a></code>
+		<span class="tooltip"><p>Log a panic or emergency level message.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/logWithLevel:format:arguments:">&ndash;&nbsp;logWithLevel:format:arguments:</a></code>
+		<span class="tooltip"><p>Logs a message with the given level.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Logging to external files" name="task_Logging to external files"></a>
+						<h3 class="subsubtitle task-title">Logging to external files</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addDescriptor:">&ndash;&nbsp;addDescriptor:</a></code>
+		<span class="tooltip"><p>Add an external descriptor to the logger.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeDescriptor:">&ndash;&nbsp;removeDescriptor:</a></code>
+		<span class="tooltip"><p>Remove an external descriptor from the logger.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Properties" name="task_Properties"></a>
+						<h3 class="subsubtitle task-title">Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/facility">&nbsp;&nbsp;facility</a></code>
+		<span class="tooltip"><p>The <a href="#//api/name/facility">facility</a> identifier.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/options">&nbsp;&nbsp;options</a></code>
+		<span class="tooltip"><p>ASL connection <a href="#//api/name/options">options</a>.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/additionalDescriptors">&nbsp;&nbsp;additionalDescriptors</a></code>
+		<span class="tooltip"><p>The logger&rsquo;s set of registered external logging descriptors.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/severityFilterMask">&nbsp;&nbsp;severityFilterMask</a></code>
+		<span class="tooltip"><p>The logger&rsquo;s severity level filtering mask.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/additionalDescriptors" title="additionalDescriptors"></a>
+	<h3 class="subsubtitle method-title">additionalDescriptors</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The logger&rsquo;s set of registered external logging descriptors.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSSet *additionalDescriptors</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Each descriptor is represented as an NSNumber.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/addDescriptor:">&ndash; addDescriptor:</a></p></code></li>
+			
+			<li><code><p><a href="#//api/name/removeDescriptor:">&ndash; removeDescriptor:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/facility" title="facility"></a>
+	<h3 class="subsubtitle method-title">facility</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The <a href="#//api/name/facility">facility</a> identifier.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *facility</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Use <a href="#//api/name/facility">facility</a> to give the logger a name.
+If you&rsquo;re using a dedicated logger for a subsystem, you might name the subsystem, using that name as the logger&rsquo;s <a href="#//api/name/facility">facility</a> value.</p>
+
+<p>Recommended practice is to follow a &ldquo;reverse DNS notation&rdquo; style for <a href="#//api/name/facility">facility</a> names to avoid namespace collection in ASL among other loggers.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/options" title="options"></a>
+	<h3 class="subsubtitle method-title">options</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>ASL connection <a href="#//api/name/options">options</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) uint32_t options</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/options">options</a> value used when opening a connection to the ASL service via asl_open(). The value is a bitwise OR of the following:</p>
+
+<p>ASL_OPT_STDERR
+: Also log messages to stderr (required for viewing messages in Xcode console).</p>
+
+<p>ASL_OPT_NO_DELAY
+: Connect immediately to the ASL service.</p>
+
+<p>ASL_OPT_NO_REMOTE
+: Ignore any remote severity level filtering settings, using only our own <a href="#//api/name/severityFilterMask">severityFilterMask</a> value for filtering.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/severityFilterMask" title="severityFilterMask"></a>
+	<h3 class="subsubtitle method-title">severityFilterMask</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The logger&rsquo;s severity level filtering mask.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) int severityFilterMask</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>A mask value defining a filter of messages to be sent to the ASL database by their severity level. Use the <a href="x-man-page://asl" title="asl(3)">asl(3)</a>
+macro <code>ASL_FILTER_MASK_UPTO()</code> to obtain an appropriate filtering mask value.</p>
+
+<p><strong>Examples</strong></p>
+
+<p>To configure the logger to limit logging of messages to a range of the most severe up to the NOTICE level:</p>
+
+<pre><code>[logger setSeverityFilterMask: ASL_FILTER_MASK_UPTO (ASL_LEVEL_NOTICE)]`
+</code></pre>
+
+<p>To log messages with all severity levels from emergency to <a href="#//api/name/debug:">debug:</a></p>
+
+<pre><code>[logger setSeverityFilterMask: ASL_FILTER_MASK_UPTO (ASL_LEVEL_DEBUG)];
+</code></pre>
+
+<p>To filter messages to include only errors and more severe levels:</p>
+
+<pre><code>[logger setSeverityFilterMask: ASL_FILTER_MASK_UPTO (ASL_LEVEL_ERROR)]; 
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addDescriptor:" title="addDescriptor:"></a>
+	<h3 class="subsubtitle method-title">addDescriptor:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Add an external descriptor to the logger.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addDescriptor:(int)<em>descriptor</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>descriptor</em></dt>
+			<dd><p>The POSIX file descriptor.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds the given descriptor to the logger&rsquo;s list of external descriptors that will receive copies of logged messages. The descriptor may point to a file, pipe, or socket.</p>
+
+<p>ASL performs no severity level filtering on messages sent to external descriptors, including standard error. External descriptors will receive copies all messages logged.</p><div class="warning"><p><strong>Note:</strong> External logging descriptors are not automatically opened when added. The caller is responsible for preparing any descriptor for writing before adding to the logger.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/additionalDescriptors">@property additionalDescriptors</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/alert:" title="alert:"></a>
+	<h3 class="subsubtitle method-title">alert:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log an alert level message.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)alert:(NSString *)<em>message</em>, <em>...</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The message.  Accepts all formatting specifiers available to NSString.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>A comma-separated list of arguments to substitute into format.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/aslclientRef" title="aslclientRef"></a>
+	<h3 class="subsubtitle method-title">aslclientRef</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>asl client handle</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (aslclient)aslclientRef</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The aslclient reference for the calling thread.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Every thread has its own connection to the ASL service. This method returns the asl client handle appropriate for use with the calling thread. This value can be passed to other ASL API where an aslclient reference is required.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/critical:" title="critical:"></a>
+	<h3 class="subsubtitle method-title">critical:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log a critical level message.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)critical:(NSString *)<em>message</em>, <em>...</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The message.  Accepts all formatting specifiers available to NSString.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>A comma-separated list of arguments to substitute into format.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/debug:" title="debug:"></a>
+	<h3 class="subsubtitle method-title">debug:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log a debug level message.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)debug:(NSString *)<em>message</em>, <em>...</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The message text. Accepts all formatting specifiers available to NSString.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>A comma-separated list of arguments to substitute into format.
+This is the least severe message level.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>In the default syslog configuration, debug- and info-level messages are filtered out the ASL database. They will be logged to stderr and also to any additional file descriptors attached to the logger.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/error:" title="error:"></a>
+	<h3 class="subsubtitle method-title">error:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log an error level message.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)error:(NSString *)<em>message</em>, <em>...</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The message.  Accepts all formatting specifiers available to NSString.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>A comma-separated list of arguments to substitute into format.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/info:" title="info:"></a>
+	<h3 class="subsubtitle method-title">info:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log an info level message.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)info:(NSString *)<em>message</em>, <em>...</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The message text. Accepts all formatting specifiers available to NSString.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>A comma-separated list of arguments to substitute into format.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>In the default syslog configuration, debug- and info-level messages are filtered out the ASL database. They will be logged to stderr and also to any additional file descriptors attached to the logger.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithFacility:options:" title="initWithFacility:options:"></a>
+	<h3 class="subsubtitle method-title">initWithFacility:options:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Designated initializer</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithFacility:(NSString *)<em>facility</em> options:(uint32_t)<em>options</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>facility</em></dt>
+			<dd><p>The <a href="#//api/name/facility">facility</a> for which this logger will be logging. Pass nil to use ASL defaults.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>Bitflag specifying ASL connection <a href="#//api/name/options">options</a>. Of most utility is the ASL_OPT_STDERR flag.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The <a href="#//api/name/facility">facility</a> can be used to identify the application or a particular subsystem within the application. Messages are tagged with this <a href="#//api/name/facility">facility</a> identifier when added to the ASL database. The value should be unique to your application to avoid name collisions with other loggers. Apple suggests using a reverse-DNS style naming scheme.</p>
+
+<p>The option ASL_OPT_STDERR configures the logger to echo all messages to stderr.</p><div class="warning"><p>NOTE: this required to see log messages in the Xcode console.</p>
+
+<p>Use the constant <code>SOLoggerDefaultASLOptions</code> for a reasonable combination of Apple System Logging <a href="#//api/name/options">options</a>. Currently defined as:</p>
+
+<p>  ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT_NO_REMOTE</p>
+
+<p>See <code>asl_open()</code> in <a href="x-man-page://asl" title="asl(3)">asl(3)</a>
+for documentation on the available option flags.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/logWithLevel:format:arguments:" title="logWithLevel:format:arguments:"></a>
+	<h3 class="subsubtitle method-title">logWithLevel:format:arguments:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Logs a message with the given level.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)logWithLevel:(int)<em>aslLevel</em> format:(NSString *)<em>format</em> arguments:(va_list)<em>arguments</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aslLevel</em></dt>
+			<dd><p>The <a href="x-man-page://asl" title="asl(3)">asl(3)</a>
+severity level of the message.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>format</em></dt>
+			<dd><p>The text of the message. Accepts all formatting specifiers available to NSString.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>arguments</em></dt>
+			<dd><p>A list of arguments to substitute into format.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>ASL severity levels, from least to most severe:</p>
+
+<ul>
+<li>ASL_LEVEL_DEBUG</li>
+<li>ASL_LEVEL_INFO</li>
+<li>ASL_LEVEL_NOTICE</li>
+<li>ASL_LEVEL_WARNING</li>
+<li>ASL_LEVEL_ERR</li>
+<li>ASL_LEVEL_CRIT</li>
+<li>ASL_LEVEL_ALERT</li>
+<li>ASL_LEVEL_EMERG</li>
+</ul>
+
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/notice:" title="notice:"></a>
+	<h3 class="subsubtitle method-title">notice:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log a notice level message.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)notice:(NSString *)<em>message</em>, <em>...</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The message.  Accepts all formatting specifiers available to NSString.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>A comma-separated list of arguments to substitute into format.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>In the default syslog configuration, this is the lowest severity level to be logged in the ASL database.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/panic:" title="panic:"></a>
+	<h3 class="subsubtitle method-title">panic:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log a panic or emergency level message.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)panic:(NSString *)<em>message</em>, <em>...</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The message.  Accepts all formatting specifiers available to NSString.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>A comma-separated list of arguments to substitute into format.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This is the highest severity level message.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeDescriptor:" title="removeDescriptor:"></a>
+	<h3 class="subsubtitle method-title">removeDescriptor:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Remove an external descriptor from the logger.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)removeDescriptor:(int)<em>descriptor</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>descriptor</em></dt>
+			<dd><p>The POSIX file descriptor.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Removes the given file descriptor from the logger&rsquo;s list of external descriptors receiving messages.</p>
+
+<p>When the logger is deallocated, all external descriptor are automatically removed. You only need to call this method when removing an external descriptor adhoc.</p><div class="warning"><p><strong>Note:</strong> External logging descriptors are not automatically closed when removed. The caller is responsible for closing all external file descriptors.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/additionalDescriptors">@property additionalDescriptors</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/warning:" title="warning:"></a>
+	<h3 class="subsubtitle method-title">warning:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Log a warning level message.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)warning:(NSString *)<em>message</em>, <em>...</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>message</em></dt>
+			<dd><p>The message.  Accepts all formatting specifiers available to NSString.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>...</em></dt>
+			<dd><p>A comma-separated list of arguments to substitute into format.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>NSLog() messages are written to the system log at the ASL warning level.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">SOLogger.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 Standard Orbit. All rights reserved. (Last updated: 2012-01-19)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 752)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

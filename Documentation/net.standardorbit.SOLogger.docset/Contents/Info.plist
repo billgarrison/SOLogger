@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleIdentifier</key>
+	<string>net.standardorbit.SOLogger</string>
+	<key>CFBundleName</key>
+	<string>SOLogger</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0</string>
+	<key>CFBundleVersion</key>
+	<string>2.0</string>
+	
+	
+	<key>DocSetDescription</key>
+	<string>SOLogger is a Cocoa class for logging via Apple System Logging (ASL).</string>
+	
+	<key>DocSetFeedName</key>
+	<string>SOLogger Documentation</string>
+	
+	<key>DocSetMinimumXcodeVersion</key>
+	<string>3.0</string>
+	
+	<key>DocSetPublisherIdentifier</key>
+	<string>net.standardorbit.documentation</string>
+	<key>DocSetPublisherName</key>
+	<string>Standard Orbit</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2012 Standard Orbit. All rights reserved.</string>
+</dict>
+</plist>

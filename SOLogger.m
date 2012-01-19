@@ -154,8 +154,7 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
 @implementation SOLogger
 
 @synthesize facility = _facility;
-@synthesize connectionOptions = _ASLOptions;
-@synthesize ASLClientForLoggerKey =  _ASLClientForLoggerKey;
+@synthesize options = _ASLOptions;
 @synthesize severityFilterMask = _severityFilterMask;
 
 #pragma mark -
@@ -170,7 +169,6 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
     _ASLOptions = options;
     
     _extraLoggingDescriptors = [[NSMutableSet alloc] init];
-    _ASLClientForLoggerKey = [[NSString alloc] initWithFormat:@"ASLClientForLogger%p", self];
     _ASLClientCache = [[NSCache alloc] init];
     
     /* If this is a debug build, set the default filtering to include everything. 
@@ -197,9 +195,6 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
     
     [_ASLClientCache release];
     _ASLClientCache = nil;
-        
-	[_ASLClientForLoggerKey release];
-    _ASLClientForLoggerKey = nil;
     
 	[_facility release];
     _facility = nil;
@@ -232,7 +227,7 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
 #endif
         /* Create a new ASL client cover object */
         
-        ASLClient = [[_SOASLClient alloc] initWithLogger:self facility:[self facility] options:[self connectionOptions]];
+        ASLClient = [[_SOASLClient alloc] initWithLogger:self facility:[self facility] options:[self options]];
                 
         if (ASLClient)
         {

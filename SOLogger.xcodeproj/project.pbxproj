@@ -710,6 +710,7 @@
 				F20D47B414C74062001D31CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F24468F114C638E5005D4C0C /* Build configuration list for PBXNativeTarget "UnitTestsOSX" */ = {
 			isa = XCConfigurationList;
