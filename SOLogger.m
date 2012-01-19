@@ -7,6 +7,12 @@
 #import "SOLogger.h"
 #import <asl.h>
 
+#ifndef __has_feature
+#define __has_feature(x) 0
+#endif
+
+#define NO_ARC !__has_feature(objc_arc)
+
 #if SOLOGGER_DEBUG
 static inline void LOG_ASLCLIENT(const char *where, aslclient ASLClient);
 #endif
@@ -39,7 +45,9 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
     
     if (logger == nil)
     {
+#if NO_ARC
         [self release];
+#endif
         return nil;
     }
 	//const char *normalizedFacility = (facility) ? [facility UTF8String] : "com.apple.console";
@@ -81,7 +89,9 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
     if (death_rattle) free(death_rattle);
 #endif
     
+#if NO_ARC
 	[super dealloc];
+#endif
 }
 
 - (aslclient) aslclientRef
@@ -193,13 +203,14 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
     /* Broadcast to dependent ASL clients that we're going away */
     [[NSNotificationCenter defaultCenter] postNotificationName:SOLoggerWillDieNotification object:self];
     
+#if NO_ARC
     [_ASLClientCache release];
-    _ASLClientCache = nil;
-    
-	[_facility release];
-    _facility = nil;
-    
+    [_facility release];
 	[_extraLoggingDescriptors release];
+#endif
+    
+    _ASLClientCache = nil;
+    _facility = nil;
     _extraLoggingDescriptors = nil;
     
 #if SOLOGGER_DEBUG
@@ -207,7 +218,9 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
 	NSLog(@"Deallocating %@ on %@ thread %p", self, ([currentThread isMainThread] ? @"main" : @"background"), currentThread);	
 #endif
     
+#if NO_ARC
 	[super dealloc];
+#endif
 }
 
 /* 
@@ -234,8 +247,9 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
             /* Cache the new ASL client
              */
             [_ASLClientCache setObject:ASLClient forKey:threadKey];
+#if NO_ARC
             [ASLClient release];
-
+#endif
             /* Configure the connection's filter mask. 
              */
             asl_set_filter ([ASLClient aslclientRef], [self severityFilterMask]);
@@ -354,7 +368,9 @@ uint32_t SOLoggerDefaultASLOptions = ASL_OPT_NO_DELAY | ASL_OPT_STDERR | ASL_OPT
         {
             NSLog (@"asl_log() failed to write the message: %@", text);
         }
+#if NO_ARC
         [text release];
+#endif
         text = nil;
         
         // Cleanup
