@@ -7,6 +7,7 @@ SOLogger
   * provides methods for logging formatted messages at the various severity levels supported by ASL (e.g. Info, Warning, Debug)
   * supports mirroring logged messages to additional file, pipe, or socket descriptors.
   * supports logging from background threads using the recommended practice of an independent ASL client handle per thread.
+  * compatible with both ARC-enabled and manually managed projects.
 
 Peter Hosey has written an excellent series of blog articles on ASL. [You should read them, starting here](http://boredzo.org/blog/archives/2008-01-20/why-asl, "Why ASL?"). These articles inspired me to put together SOLogger. Or look at the [man page](http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/asl.3.html).
 
@@ -268,6 +269,7 @@ Whenever you want to log a message, invoke an SOLogger method on the gLogger glo
 ## Compatibility
 
 SOLogger v2 is compatible with iOS 4 or greater, and Mac OS X 10.6 or greater. 
+Requires clang compiler. ARC-compatible.
 
 ## License
 
