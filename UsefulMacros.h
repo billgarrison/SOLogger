@@ -5,9 +5,6 @@
 //  Copyright 2010 Standard Orbit Software, LLC. All rights reserved.
 //	LICENSE <http://creativecommons.org/licenses/BSD/>
 //
-// $Revision$
-// $Author$
-// $Date$
 
 #if DEBUG
 // For debug builds (DEBUG=1), define a method entry logging convenience

@@ -4,9 +4,6 @@
 //
 //  Copyright 2010 Standard Orbit Software, LLC. All rights reserved.
 //
-// $Revision$
-// $Author$
-// $Date$
 
 #import "SOLogger.h"
 
