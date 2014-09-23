@@ -9,7 +9,7 @@ SOLogger
   * supports logging from background threads using the recommended practice of an independent ASL client handle per thread.
   * compatible with both ARC-enabled and manually managed projects.
 
-Peter Hosey has written an excellent series of blog articles on ASL. [You should read them, starting here](http://boredzo.org/blog/archives/2008-01-20/why-asl, "Why ASL?"). These articles inspired me to put together SOLogger. Or look at the [man page](http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/asl.3.html).
+Peter Hosey has written an excellent series of blog articles on ASL. [You should read them, starting here](https://web.archive.org/web/20130512060103/http://boredzo.org/blog/archives/2008-01-20/why-asl, "Why ASL?"). These articles inspired me to put together SOLogger. Or look at the [man page](http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man3/asl.3.html).
 
 ## Features
 
